@@ -250,7 +250,11 @@ int main(int argc, const char* const argv[])
         (int)((diffTime%U_MILLIS_PER_MINUTE)/U_MILLIS_PER_SECOND),
         (int)(diffTime%U_MILLIS_PER_SECOND));
 
+#ifdef ZERO_EXIT_CODE_FOR_FAILURES
+    return 0;
+#else
     return nerrors ? 1 : 0;
+#endif
 }
 
 /*
@@ -302,7 +306,10 @@ static void ctest_appendToDataDirectory(const char *toAppend)
  *                       tests dynamically load some data.
  */
 void ctest_setICU_DATA() {
+    // Android-changed: Do not u_setDataDirectory because libicuuc.so initializes itself.
+    #if !defined(ANDROID_USE_ICU_REG)
     u_setDataDirectory(ctest_dataOutDir());
+    #endif
 }
 
 /*  These tests do cleanup and reinitialize ICU in the course of their operation.
@@ -328,7 +335,7 @@ UBool ctest_resetICU() {
         /* Error already displayed. */
         return false;
     }
-    u_setDataDirectory(dataDir);
+    ctest_setICU_DATA();
     free(dataDir);
     u_init(&status);
     if (U_FAILURE(status)) {
