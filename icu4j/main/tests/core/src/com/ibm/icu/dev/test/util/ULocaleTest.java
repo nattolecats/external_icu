@@ -822,6 +822,20 @@ public class ULocaleTest extends TestFmwk {
                 { "ji", "yid", "ji", "", "" },
                 { "jw", "jaw", "jw", "", "" },
                 { "sh", "srp", "sh", "", "" },
+                { "mo", "ron", "mo", "", "" },
+                // and some non-obsolete ones
+                { "az", "aze", "az", "", "" },
+                { "cy", "cym", "cy", "", "" },
+                { "hz", "her", "hz", "", "" },
+                { "ky", "kir", "ky", "", "" },
+                { "na", "nau", "na", "", "" },
+                { "sa", "san", "sa", "", "" },
+                { "ts", "tso", "ts", "", "" },
+                { "zu", "zul", "zu", "", "" },
+                { "zz_DG", "", "zz", "DGA", "DG" },
+                { "zz_IC", "", "zz", "XIC", "IC" },
+                { "zz_XK", "", "zz", "XKK", "XK" },
+                // terminator
                 { "", "", "", "", "" }
         };
 
@@ -3087,8 +3101,8 @@ public class ULocaleTest extends TestFmwk {
                     "nl"
                 }, {
                     "und_NO",
-                    "no_Latn_NO",  // Android patch: Replace nb with no.
-                    "no"
+                    "nb_Latn_NO",
+                    "nb"
                 }, {
                     "und_NP",
                     "ne_Deva_NP",
@@ -3199,8 +3213,8 @@ public class ULocaleTest extends TestFmwk {
                     "sl"
                 }, {
                     "und_SJ",
-                    "no_Latn_SJ",  // Android patch: Replace nb with no.
-                    "no_SJ"
+                    "nb_Latn_SJ",
+                    "nb_SJ"
                 }, {
                     "und_SK",
                     "sk_Latn_SK",

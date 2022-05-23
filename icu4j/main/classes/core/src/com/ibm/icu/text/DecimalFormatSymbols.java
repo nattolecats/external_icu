@@ -1328,8 +1328,6 @@ public class DecimalFormatSymbols implements Cloneable, Serializable {
             "currencyGroup",
             "superscriptingExponent",
             "approximatelySign",
-    // Android-added: Libcore bridge needs localized pattern separator. http://b/112080617
-            "list",
     };
 
     /*
@@ -1408,24 +1406,6 @@ public class DecimalFormatSymbols implements Cloneable, Serializable {
         }
     }
 
-    // BEGIN Android-added: Libcore bridge needs localized pattern separator. http://b/112080617
-    /**
-     * @internal
-     */
-    public static String getLocalizedPatternSeparator(ULocale locale, NumberingSystem ns) {
-        CacheData data = getCachedLocaleData(locale, ns);
-        return data.numberElements[13];
-    }
-
-    private static CacheData getCachedLocaleData(ULocale locale, NumberingSystem ns) {
-        // TODO: The cache requires a single key, so we just save the NumberingSystem into the
-        // locale string. NumberingSystem is then decoded again in the loadData() method. It would
-        // be more efficient if we didn't have to serialize and deserialize the NumberingSystem.
-        ULocale keyLocale = (ns == null) ? locale : locale.setKeywordValue("numbers", ns.getName());
-        return cachedLocaleData.getInstance(keyLocale, null /* unused */);
-    }
-    // END Android-added: Libcore bridge needs localized pattern separator. http://b/112080617
-
     /**
      * Initializes the symbols from the locale data.
      */
@@ -1433,8 +1413,11 @@ public class DecimalFormatSymbols implements Cloneable, Serializable {
         this.requestedLocale = locale.toLocale();
         this.ulocale = locale;
 
-        // Android-changed: Libcore bridge needs localized pattern separator. http://b/112080617
-        CacheData data = getCachedLocaleData(locale, ns);
+        // TODO: The cache requires a single key, so we just save the NumberingSystem into the
+        // locale string. NumberingSystem is then decoded again in the loadData() method. It would
+        // be more efficient if we didn't have to serialize and deserialize the NumberingSystem.
+        ULocale keyLocale = (ns == null) ? locale : locale.setKeywordValue("numbers", ns.getName());
+        CacheData data = cachedLocaleData.getInstance(keyLocale, null /* unused */);
 
         setLocale(data.validLocale, data.validLocale);
         setDigitStrings(data.digits);

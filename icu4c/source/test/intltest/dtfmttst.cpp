@@ -190,7 +190,7 @@ void DateFormatTest::TestPatterns() {
         {UDAT_ABBR_UTC_TZ, "ZZZZ", "en", "ZZZZ"},
 
         {UDAT_YEAR_NUM_MONTH_DAY UDAT_ABBR_UTC_TZ, "yMdZZZZ", "en", "M/d/y, ZZZZ"},
-        {UDAT_MONTH_DAY UDAT_LOCATION_TZ, "MMMMdVVVV", "en", "MMMM d, VVVV"}
+        {UDAT_MONTH_DAY UDAT_LOCATION_TZ, "MMMMdVVVV", "en", "MMMM d 'at' VVVV"}
     };
 
     IcuTestErrorCode errorCode(*this, "TestPatterns()");
@@ -4946,12 +4946,12 @@ void DateFormatTest::TestDFSCreateForLocaleNonGregorianLocale() {
         return;
     }
 
-    // Android: All locales default to Gregorian calendar:
+    // Farsi should default to the persian calendar, not gregorian
     int32_t count;
     const UnicodeString *months = sym->getShortMonths(count);
 
     // First persian month.
-    UnicodeString expected("\\u0698\\u0627\\u0646\\u0648\\u06CC\\u0647");  // Android-changed
+    UnicodeString expected("\\u0641\\u0631\\u0648\\u0631\\u062f\\u06cc\\u0646");
     assertEquals("", expected.unescape(), months[0]);
 }
 

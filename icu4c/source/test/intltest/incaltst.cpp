@@ -143,9 +143,9 @@ IntlCalendarTest::TestTypes()
                             "buddhist",           
                             "gregorian",
                             "gregorian",
-                            "gregorian",  // android-changed.  "buddhist",
-                            "gregorian",  // android-changed.  "buddhist",
-                            "gregorian",  // android-changed.  "buddhist",
+                            "buddhist",           
+                            "buddhist",           
+                            "buddhist",           
                             "gregorian",
                             NULL };
 
@@ -470,9 +470,7 @@ void IntlCalendarTest::TestBuddhistFormat() {
         UnicodeString expect = CharsToUnicodeString("\\u0E27\\u0E31\\u0E19\\u0E40\\u0E2A\\u0E32\\u0E23\\u0E4C\\u0E17\\u0E35\\u0E48"
             " 8 \\u0E01\\u0E31\\u0e19\\u0e22\\u0e32\\u0e22\\u0e19 \\u0e1e.\\u0e28. 2544");
         UDate         expectDate = 999932400000.0;
-        // Android-changed: Default calendar on Android is Gregorian.
-        // Locale        loc("th_TH_TRADITIONAL"); // legacy
-        Locale        loc("th_TH_TRADITIONAL@calendar=buddhist"); // legacy
+        Locale        loc("th_TH_TRADITIONAL"); // legacy
         
         simpleTest(loc, expect, expectDate, status);
     }
@@ -990,7 +988,7 @@ void IntlCalendarTest::TestConsistencyEthiopicAmeteAlem() {
 }
 void IntlCalendarTest::checkConsistency(const char* locale) {
     // Check 2.5 years in quick mode and 8000 years in exhaustive mode.
-    int32_t numOfDaysToTest = (quick ? 2.5 : 8000) * 365;
+    int32_t numOfDaysToTest = static_cast<int32_t>((quick ? 2.5 : 8000) * 365);
     constexpr int32_t msInADay = 1000*60*60*24;
     std::string msg("TestConsistency");
     IcuTestErrorCode status(*this, (msg + locale).c_str());
