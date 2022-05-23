@@ -86,7 +86,7 @@ ku{
         EU{"Yekîtiya Ewropayê"}
         FI{"Fînlenda"}
         FJ{"Fîjî"}
-        FK{"Giravên Malvîn"}
+        FK{"Giravên Falkland"}
         FM{"Mîkronezya"}
         FO{"Giravên Feroe"}
         FR{"Fransa"}
@@ -191,7 +191,7 @@ ku{
         PM{"Saint-Pierre û Miquelon"}
         PN{"Giravên Pitcairn"}
         PR{"Porto Rîko"}
-        PS{"Xakên filistînî"}
+        PS{"Filistîn"}
         PT{"Portûgal"}
         PW{"Palau"}
         PY{"Paraguay"}
@@ -255,14 +255,12 @@ ku{
     }
     Countries%short{
         GB{"KY"}
-        PS{"Filistîn"}
         US{"DYA"}
     }
     Countries%variant{
         CD{"Kongo (KDK)"}
         CG{"Kongo (Komar)"}
         CZ{"Komara Çekî"}
-        FK{"Giravên Falkland"}
         TL{"Tîmora Rojhilat"}
     }
 }
