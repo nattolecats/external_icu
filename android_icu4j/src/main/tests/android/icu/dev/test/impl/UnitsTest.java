@@ -93,7 +93,7 @@ public class UnitsTest {
                 0),
 
             // A minimal nudge under 2.0, rounding up to 2.0 ft, 0 in.
-            // TODO(icu-units#108): this matches double precision calculations
+            // TODO(ICU-21861): this matches double precision calculations
             // from C++, but BigDecimal is in use: do we want Java to be more
             // precise than C++?
             new TestCase(
@@ -119,7 +119,7 @@ public class UnitsTest {
             // 1e-16 light years is 0.946073 meters.
 
             // A 2.1 meter nudge under 2.0 light years, rounding up to 2.0 ly, 0 m.
-            // TODO(icu-units#108): this matches double precision calculations
+            // TODO(ICU-21861): this matches double precision calculations
             // from C++, but BigDecimal is in use: do we want Java to be more
             // precise than C++?
             new TestCase("light-year", "light-year-and-meter",
@@ -128,7 +128,7 @@ public class UnitsTest {
                                         new Measure(0, MeasureUnit.METER)},
                          0),
 
-            // // TODO(icu-units#108): figure out precision thresholds for BigDecimal?
+            // // TODO(ICU-21861): figure out precision thresholds for BigDecimal?
             // // This test passes in C++ due to double-precision rounding.
             // // A 2.1 meter nudge under 1.0 light years, rounding up to 1.0 ly, 0 m.
             // new TestCase("light-year", "light-year-and-meter",
@@ -146,7 +146,7 @@ public class UnitsTest {
                                         new Measure(9.46073, MeasureUnit.METER)},
                          0 /* meters, precision */),
 
-            // TODO(icu-units#108): reconsider whether epsilon rounding is desirable:
+            // TODO(ICU-21861): reconsider whether epsilon rounding is desirable:
             //
             // 2e-16 light years is 1.892146 meters. For C++ double, we consider
             // this in the noise, and thus expect a 0. (This test fails when
@@ -156,8 +156,13 @@ public class UnitsTest {
                          new Measure[] {new Measure(1, MeasureUnit.LIGHT_YEAR),
                                         new Measure(1.892146, MeasureUnit.METER)},
                          0),
-        };
 
+            // Negative numbers
+            new TestCase(
+                "yard", "mile-and-yard", BigDecimal.valueOf(-1800),
+                new Measure[] {new Measure(-1, MeasureUnit.MILE), new Measure(-40, MeasureUnit.YARD)},
+                1e-10),
+        };
 
         ConversionRates rates = new ConversionRates();
         MeasureUnit input, output;
@@ -174,8 +179,6 @@ public class UnitsTest {
             ComplexUnitsConverter converter2 = new ComplexUnitsConverter(testCase.input, testCase.output);
             testCase.testATestCase(converter2);
         }
-
-        // TODO(icu-units#63): test negative numbers!
     }
 
 
@@ -471,6 +474,14 @@ public class UnitsTest {
                 // Fuel Consumption
                 new TestData("cubic-meter-per-meter", "mile-per-gallon", 2.1383143939394E-6, 1.1),
                 new TestData("cubic-meter-per-meter", "mile-per-gallon", 2.6134953703704E-6, 0.9),
+                new TestData("liter-per-100-kilometer", "mile-per-gallon", 6.6, 35.6386),
+                // // TODO(ICU-21862): we should probably return something other than "0":
+                // new TestData("liter-per-100-kilometer", "mile-per-gallon", 0, 0),
+                // new TestData("mile-per-gallon", "liter-per-100-kilometer", 0, 0),
+                // // TODO(ICU-21862): deal with infinity input in Java?
+                // new TestData("mile-per-gallon", "liter-per-100-kilometer", INFINITY, 0),
+                // We skip testing -Inf, because the inverse conversion loses the sign:
+                // new TestData("mile-per-gallon", "liter-per-100-kilometer", -INFINITY, 0),
                 // Test Aliases
                 // Alias is just another name to the same unit. Therefore, converting
                 // between them should be the same.
@@ -485,45 +496,32 @@ public class UnitsTest {
             MeasureUnitImpl source = MeasureUnitImpl.forIdentifier(test.sourceIdentifier);
             MeasureUnitImpl target = MeasureUnitImpl.forIdentifier(test.targetIdentifier);
 
-            UnitsConverter converter = new UnitsConverter(source, target, conversionRates);
-
             double maxDelta = 1e-6 * Math.abs(test.expected.doubleValue());
             if (test.expected.doubleValue() == 0) {
                 maxDelta = 1e-12;
             }
+            double inverseMaxDelta = 1e-6 * Math.abs(test.input.doubleValue());
+            if (test.input.doubleValue() == 0) {
+                inverseMaxDelta = 1e-12;
+            }
+
+            UnitsConverter converter = new UnitsConverter(source, target, conversionRates);
             assertEquals("testConverter: " + test.sourceIdentifier + " to " + test.targetIdentifier,
                     test.expected.doubleValue(), converter.convert(test.input).doubleValue(),
                     maxDelta);
-
-            maxDelta = 1e-6 * Math.abs(test.input.doubleValue());
-            if (test.input.doubleValue() == 0) {
-                maxDelta = 1e-12;
-            }
             assertEquals(
                     "testConverter inverse: " + test.targetIdentifier + " back to " + test.sourceIdentifier,
                     test.input.doubleValue(), converter.convertInverse(test.expected).doubleValue(),
-                    maxDelta);
+                    inverseMaxDelta);
 
-
-            // TODO: Test UnitsConverter created using CLDR separately.
             // Test UnitsConverter created by CLDR unit identifiers
             UnitsConverter converter2 = new UnitsConverter(test.sourceIdentifier, test.targetIdentifier);
-
-            maxDelta = 1e-6 * Math.abs(test.expected.doubleValue());
-            if (test.expected.doubleValue() == 0) {
-                maxDelta = 1e-12;
-            }
             assertEquals("testConverter2: " + test.sourceIdentifier + " to " + test.targetIdentifier,
                     test.expected.doubleValue(), converter2.convert(test.input).doubleValue(),
                     maxDelta);
-
-            maxDelta = 1e-6 * Math.abs(test.input.doubleValue());
-            if (test.input.doubleValue() == 0) {
-                maxDelta = 1e-12;
-            }
             assertEquals("testConverter2 inverse: " + test.targetIdentifier + " back to " + test.sourceIdentifier,
                     test.input.doubleValue(), converter2.convertInverse(test.expected).doubleValue(),
-                    maxDelta);
+                    inverseMaxDelta);
         }
     }
 
