@@ -111,20 +111,15 @@ public final class NumberFormatter {
      * number caused the two modes to favor the opposite result.
      *
      * @hide Only a subset of ICU is exposed in Android
-     * @hide draft / provisional / internal are hidden on Android
      */
     public static enum RoundingPriority {
         /**
          * Favor greater precision by relaxing one of the rounding constraints.
-         *
-         * @hide draft / provisional / internal are hidden on Android
          */
         RELAXED,
 
         /**
          * Favor adherence to all rounding constraints by producing lower precision.
-         *
-         * @hide draft / provisional / internal are hidden on Android
          */
         STRICT,
     }
@@ -416,14 +411,14 @@ public final class NumberFormatter {
         /**
          * Same as AUTO, but do not show the sign on negative zero.
          *
-         * @hide draft / provisional / internal are hidden on Android
+         * @hide Hide new API in Android temporarily
          */
         NEGATIVE,
 
         /**
          * Same as ACCOUNTING, but do not show the sign on negative zero.
          *
-         * @hide draft / provisional / internal are hidden on Android
+         * @hide Hide new API in Android temporarily
          */
         ACCOUNTING_NEGATIVE,
     }
@@ -465,20 +460,15 @@ public final class NumberFormatter {
      * </ul>
      *
      * @hide Only a subset of ICU is exposed in Android
-     * @hide draft / provisional / internal are hidden on Android
      */
     public static enum TrailingZeroDisplay {
         /**
          * Display trailing zeros according to the settings for minimum fraction and significant digits.
-         *
-         * @hide draft / provisional / internal are hidden on Android
          */
         AUTO,
 
         /**
          * Same as AUTO, but hide trailing zeros after the decimal separator if they are all zero.
-         *
-         * @hide draft / provisional / internal are hidden on Android
          */
         HIDE_IF_WHOLE,
     }
