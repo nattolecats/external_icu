@@ -47,10 +47,10 @@
         <property name="specialsDir" value="${basedir}/../../../icu4c/source/data/xml"/>
 
         <!-- Default value for ICU version (icuver.txt). Update this for each release. -->
-        <property name="icuVersion" value="70.1.0.0"/>
+        <property name="icuVersion" value="71.1.0.0"/>
 
         <!-- Default value for ICU data version (icuver.txt). Update this for each release. -->
-        <property name="icuDataVersion" value="70.1.0.0"/>
+        <property name="icuDataVersion" value="71.1.0.0"/>
 
         <!-- An override for the CLDR version string (icuver.txt and others). This will be
              extracted from the CLDR library used for building the data if not set here. -->
@@ -177,7 +177,7 @@
                 ga, gd, gl, gsw, gu, guz, gv
 
                 // H
-                ha, haw, he, hi, hr, hsb, hu, hy
+                ha, haw, he, hi, hi_Latn, hr, hsb, hu, hy
 
                 // I
                 ia, id, ig, ii, in, in_ID, is, it, iw, iw_IL
@@ -186,8 +186,8 @@
                 ja, jgo, jmc, jv
 
                 // K
-                ka, kab, kam, kde, kea, khq, ki, kk, kkj, kl, kln, km, kn, ko, kok, ks
-                ks_IN, ksb, ksf, ksh, ku, kw, ky
+                ka, kab, kam, kde, kea, kgp, khq, ki, kk, kkj, kl, kln, km, kn, ko, kok, ks
+                ks_Deva, ks_IN, ksb, ksf, ksh, ku, kw, ky
 
                 // L
                 lag, lb, lg, lkt, ln, lo, lrc, lt, lu, luo, luy, lv
@@ -232,7 +232,7 @@
                 xh, xog
 
                 // Y
-                yav, yi, yo, yue, yue_CN, yue_HK, yue_Hans
+                yav, yi, yo, yrl, yue, yue_CN, yue_HK, yue_Hans
 
                 // Z
                 zgh, zh, zh_CN, zh_HK, zh_Hant, zh_MO, zh_SG, zh_TW, zu
