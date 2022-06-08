@@ -135,7 +135,7 @@ public class DateFormatTest extends TestFmwk {
                 {}, // marker for starting combinations
 
                 {DateFormat.YEAR_NUM_MONTH_DAY + DateFormat.ABBR_UTC_TZ, "yMdZZZZ", "en", "M/d/y, ZZZZ"},
-                {DateFormat.MONTH_DAY + DateFormat.LOCATION_TZ, "MMMMdVVVV", "en", "MMMM d, VVVV"},
+                {DateFormat.MONTH_DAY + DateFormat.LOCATION_TZ, "MMMMdVVVV", "en", "MMMM d 'at' VVVV"},
         };
         Date testDate = new Date(2012-1900, 6, 1, 14, 58, 59); // just for verbose log
 
@@ -5612,5 +5612,21 @@ public class DateFormatTest extends TestFmwk {
                 assertTrue("'AM/PM' field was found", pos_a.getBeginIndex() == 0 && pos_a.getEndIndex() == 0);
             }
         }
+    }
+
+    @Test
+    public void testExtraneousCharacters() {
+        // regression test for ICU-21802
+        Calendar cal = Calendar.getInstance();
+        SimpleDateFormat df = new SimpleDateFormat("yyyyMMdd", ULocale.US);
+        df.setLenient(false);
+
+        ParsePosition pos = new ParsePosition(0);
+        df.parse("2021", cal, pos);
+        assertTrue("Success parsing '2021'", pos.getIndex() == 0);
+
+        pos.setIndex(0);
+        df.parse("2021-", cal, pos);
+        assertTrue("Success parsing '2021-'", pos.getIndex() == 0);
     }
 }
