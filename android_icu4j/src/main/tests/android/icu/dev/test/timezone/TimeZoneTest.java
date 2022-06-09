@@ -21,7 +21,6 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Set;
 
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
@@ -176,7 +175,7 @@ public class TimeZoneTest extends TestFmwk
             new ZoneDescriptor("AET", 600, true),   // ICU Link - Australia/Sydney
             new ZoneDescriptor("SST", 660, false),  // ICU Link - Pacific/Guadalcanal
             new ZoneDescriptor("NST", 720, true),   // ICU Link - Pacific/Auckland
-            new ZoneDescriptor("MIT", 780, true),   // ICU Link - Pacific/Apia
+            new ZoneDescriptor("MIT", 780, false),  // ICU Link - Pacific/Apia
 
             new ZoneDescriptor("Etc/Unknown", 0, false),    // CLDR
 
@@ -1482,7 +1481,6 @@ public class TimeZoneTest extends TestFmwk
     }
 
     @Test
-    @Ignore
     public void TestCanonicalID() {
         // Olson (IANA) tzdata used to have very few "Link"s long time ago.
         // This test case was written when most of CLDR canonical time zones are
