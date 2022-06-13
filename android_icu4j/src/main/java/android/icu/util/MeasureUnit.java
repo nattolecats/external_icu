@@ -107,8 +107,6 @@ public class MeasureUnit implements Serializable {
 
     /**
      * Enumeration for SI and binary prefixes, e.g. "kilo-", "nano-", "mebi-".
-     *
-     * @hide Only a subset of ICU is exposed in Android
      */
     public enum MeasurePrefix {
 
@@ -405,7 +403,6 @@ public class MeasureUnit implements Serializable {
      * @param prefix The prefix, from MeasurePrefix.
      * @return A new SINGLE unit.
      * @throws UnsupportedOperationException if this unit is a COMPOUND or MIXED unit.
-     * @hide Hide new API in Android temporarily
      */
     public MeasureUnit withPrefix(MeasurePrefix prefix) {
         SingleUnitImpl singleUnit = getSingleUnitImpl();
@@ -422,7 +419,6 @@ public class MeasureUnit implements Serializable {
      *
      * @return The prefix of this SINGLE unit, from MeasurePrefix.
      * @throws UnsupportedOperationException if the unit is COMPOUND or MIXED.
-     * @hide Hide new API in Android temporarily
      */
     public MeasurePrefix getPrefix() {
         return getSingleUnitImpl().getPrefix();
@@ -904,7 +900,6 @@ public class MeasureUnit implements Serializable {
 
     /**
      * Constant for unit of concentr: milligram-ofglucose-per-deciliter
-     * @hide Hide new API in Android temporarily
      */
     public static final MeasureUnit MILLIGRAM_OFGLUCOSE_PER_DECILITER = MeasureUnit.internalGetInstance("concentr", "milligram-ofglucose-per-deciliter");
 

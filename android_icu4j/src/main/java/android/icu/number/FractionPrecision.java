@@ -30,8 +30,6 @@ public abstract class FractionPrecision extends Precision {
      * @param priority
      *            How to disambiguate between fraction digits and significant digits.
      * @return A precision for chaining or passing to the NumberFormatter precision() setter.
-     *
-     * @hide Hide new API in Android temporarily
      */
     public Precision withSignificantDigits(
             int minSignificantDigits,

@@ -332,7 +332,6 @@ public abstract class Precision {
      * when the number is an integer, use HIDE_IF_WHOLE.
      *
      * @param trailingZeroDisplay Option to configure the display of trailing zeros.
-     * @hide Hide new API in Android temporarily
      */
     public Precision trailingZeroDisplay(TrailingZeroDisplay trailingZeroDisplay) {
         Precision result = this.createCopy();
