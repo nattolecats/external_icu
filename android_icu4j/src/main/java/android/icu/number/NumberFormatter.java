@@ -109,8 +109,6 @@ public final class NumberFormatter {
      *
      * <p>Here, RELAXED favors Max-Fraction and STRICT favors Max-Significant. Note that this larger
      * number caused the two modes to favor the opposite result.
-     *
-     * @hide Only a subset of ICU is exposed in Android
      */
     public static enum RoundingPriority {
         /**
@@ -410,15 +408,11 @@ public final class NumberFormatter {
 
         /**
          * Same as AUTO, but do not show the sign on negative zero.
-         *
-         * @hide Hide new API in Android temporarily
          */
         NEGATIVE,
 
         /**
          * Same as ACCOUNTING, but do not show the sign on negative zero.
-         *
-         * @hide Hide new API in Android temporarily
          */
         ACCOUNTING_NEGATIVE,
     }
@@ -458,8 +452,6 @@ public final class NumberFormatter {
      * <li>AUTO: 0.90, 1.00, 1.10
      * <li>HIDE_IF_WHOLE: 0.90, 1, 1.10
      * </ul>
-     *
-     * @hide Only a subset of ICU is exposed in Android
      */
     public static enum TrailingZeroDisplay {
         /**
