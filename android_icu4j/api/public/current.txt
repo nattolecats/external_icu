@@ -1708,6 +1708,7 @@ package android.icu.number {
   public abstract class FractionPrecision extends android.icu.number.Precision {
     method public android.icu.number.Precision withMaxDigits(int);
     method public android.icu.number.Precision withMinDigits(int);
+    method public android.icu.number.Precision withSignificantDigits(int, int, android.icu.number.NumberFormatter.RoundingPriority);
   }
 
   public class IntegerWidth {
@@ -1756,14 +1757,26 @@ package android.icu.number {
     enum_constant public static final android.icu.number.NumberFormatter.GroupingStrategy THOUSANDS;
   }
 
+  public enum NumberFormatter.RoundingPriority {
+    enum_constant public static final android.icu.number.NumberFormatter.RoundingPriority RELAXED;
+    enum_constant public static final android.icu.number.NumberFormatter.RoundingPriority STRICT;
+  }
+
   public enum NumberFormatter.SignDisplay {
     enum_constant public static final android.icu.number.NumberFormatter.SignDisplay ACCOUNTING;
     enum_constant public static final android.icu.number.NumberFormatter.SignDisplay ACCOUNTING_ALWAYS;
     enum_constant public static final android.icu.number.NumberFormatter.SignDisplay ACCOUNTING_EXCEPT_ZERO;
+    enum_constant public static final android.icu.number.NumberFormatter.SignDisplay ACCOUNTING_NEGATIVE;
     enum_constant public static final android.icu.number.NumberFormatter.SignDisplay ALWAYS;
     enum_constant public static final android.icu.number.NumberFormatter.SignDisplay AUTO;
     enum_constant public static final android.icu.number.NumberFormatter.SignDisplay EXCEPT_ZERO;
+    enum_constant public static final android.icu.number.NumberFormatter.SignDisplay NEGATIVE;
     enum_constant public static final android.icu.number.NumberFormatter.SignDisplay NEVER;
+  }
+
+  public enum NumberFormatter.TrailingZeroDisplay {
+    enum_constant public static final android.icu.number.NumberFormatter.TrailingZeroDisplay AUTO;
+    enum_constant public static final android.icu.number.NumberFormatter.TrailingZeroDisplay HIDE_IF_WHOLE;
   }
 
   public enum NumberFormatter.UnitWidth {
@@ -1839,6 +1852,7 @@ package android.icu.number {
     method public static android.icu.number.FractionPrecision minMaxFraction(int, int);
     method public static android.icu.number.Precision minMaxSignificantDigits(int, int);
     method public static android.icu.number.Precision minSignificantDigits(int);
+    method public android.icu.number.Precision trailingZeroDisplay(android.icu.number.NumberFormatter.TrailingZeroDisplay);
     method public static android.icu.number.Precision unlimited();
   }
 
@@ -4483,12 +4497,14 @@ package android.icu.util {
     method public android.icu.util.MeasureUnit.Complexity getComplexity();
     method public int getDimensionality();
     method public String getIdentifier();
+    method public android.icu.util.MeasureUnit.MeasurePrefix getPrefix();
     method public String getSubtype();
     method public String getType();
     method public android.icu.util.MeasureUnit product(android.icu.util.MeasureUnit);
     method public android.icu.util.MeasureUnit reciprocal();
     method public java.util.List<android.icu.util.MeasureUnit> splitToSingleUnits();
     method public android.icu.util.MeasureUnit withDimensionality(int);
+    method public android.icu.util.MeasureUnit withPrefix(android.icu.util.MeasureUnit.MeasurePrefix);
     field public static final android.icu.util.MeasureUnit ACRE;
     field public static final android.icu.util.MeasureUnit ACRE_FOOT;
     field public static final android.icu.util.MeasureUnit AMPERE;
@@ -4588,6 +4604,7 @@ package android.icu.util {
     field public static final android.icu.util.MeasureUnit MILLIAMPERE;
     field public static final android.icu.util.MeasureUnit MILLIBAR;
     field public static final android.icu.util.MeasureUnit MILLIGRAM;
+    field public static final android.icu.util.MeasureUnit MILLIGRAM_OFGLUCOSE_PER_DECILITER;
     field public static final android.icu.util.MeasureUnit MILLIGRAM_PER_DECILITER;
     field public static final android.icu.util.MeasureUnit MILLILITER;
     field public static final android.icu.util.MeasureUnit MILLIMETER;
@@ -4645,6 +4662,40 @@ package android.icu.util {
     enum_constant public static final android.icu.util.MeasureUnit.Complexity COMPOUND;
     enum_constant public static final android.icu.util.MeasureUnit.Complexity MIXED;
     enum_constant public static final android.icu.util.MeasureUnit.Complexity SINGLE;
+  }
+
+  public enum MeasureUnit.MeasurePrefix {
+    method public int getBase();
+    method public int getPower();
+    enum_constant public static final android.icu.util.MeasureUnit.MeasurePrefix ATTO;
+    enum_constant public static final android.icu.util.MeasureUnit.MeasurePrefix CENTI;
+    enum_constant public static final android.icu.util.MeasureUnit.MeasurePrefix DECI;
+    enum_constant public static final android.icu.util.MeasureUnit.MeasurePrefix DEKA;
+    enum_constant public static final android.icu.util.MeasureUnit.MeasurePrefix EXA;
+    enum_constant public static final android.icu.util.MeasureUnit.MeasurePrefix EXBI;
+    enum_constant public static final android.icu.util.MeasureUnit.MeasurePrefix FEMTO;
+    enum_constant public static final android.icu.util.MeasureUnit.MeasurePrefix GIBI;
+    enum_constant public static final android.icu.util.MeasureUnit.MeasurePrefix GIGA;
+    enum_constant public static final android.icu.util.MeasureUnit.MeasurePrefix HECTO;
+    enum_constant public static final android.icu.util.MeasureUnit.MeasurePrefix KIBI;
+    enum_constant public static final android.icu.util.MeasureUnit.MeasurePrefix KILO;
+    enum_constant public static final android.icu.util.MeasureUnit.MeasurePrefix MEBI;
+    enum_constant public static final android.icu.util.MeasureUnit.MeasurePrefix MEGA;
+    enum_constant public static final android.icu.util.MeasureUnit.MeasurePrefix MICRO;
+    enum_constant public static final android.icu.util.MeasureUnit.MeasurePrefix MILLI;
+    enum_constant public static final android.icu.util.MeasureUnit.MeasurePrefix NANO;
+    enum_constant public static final android.icu.util.MeasureUnit.MeasurePrefix ONE;
+    enum_constant public static final android.icu.util.MeasureUnit.MeasurePrefix PEBI;
+    enum_constant public static final android.icu.util.MeasureUnit.MeasurePrefix PETA;
+    enum_constant public static final android.icu.util.MeasureUnit.MeasurePrefix PICO;
+    enum_constant public static final android.icu.util.MeasureUnit.MeasurePrefix TEBI;
+    enum_constant public static final android.icu.util.MeasureUnit.MeasurePrefix TERA;
+    enum_constant public static final android.icu.util.MeasureUnit.MeasurePrefix YOBI;
+    enum_constant public static final android.icu.util.MeasureUnit.MeasurePrefix YOCTO;
+    enum_constant public static final android.icu.util.MeasureUnit.MeasurePrefix YOTTA;
+    enum_constant public static final android.icu.util.MeasureUnit.MeasurePrefix ZEBI;
+    enum_constant public static final android.icu.util.MeasureUnit.MeasurePrefix ZEPTO;
+    enum_constant public static final android.icu.util.MeasureUnit.MeasurePrefix ZETTA;
   }
 
   public class Output<T> {
