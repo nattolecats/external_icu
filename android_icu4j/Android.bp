@@ -77,7 +77,7 @@ java_library_host {
     name: "timezone-host",
     visibility: [
         "//packages/modules/RuntimeI18n/apex",
-        "//system/timezone/distro/core",
+        "//system/timezone/input_tools/version",
     ],
     srcs: [
         "libcore_bridge/src/java/com/android/i18n/timezone/TzDataSetVersion.java",
