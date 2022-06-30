@@ -113,6 +113,9 @@ java_library_static {
             "-Xep:ConstantOverflow:WARN", // Known constant overflow in SplittableRandom
         ],
     },
+    lint: {
+        warning_checks: ["SuspiciousIndentation"],
+    },
 }
 
 // A separated core library that contains ICU4J because ICU4J will be in a different APEX module,
@@ -191,6 +194,9 @@ java_sdk_library {
             "-Xep:MissingOverride:OFF",
         ],
     },
+    lint: {
+        warning_checks: ["SuspiciousIndentation"],
+    },
 
     public: {
         enabled: true,
@@ -254,6 +260,10 @@ java_sdk_library {
 
     // Don't copy any output files to the dist.
     no_dist: true,
+
+    lint: {
+        warning_checks: ["SuspiciousIndentation"],
+    },
 }
 
 // Referenced implicitly from i18n.module.intra.core.api.
@@ -366,6 +376,10 @@ java_sdk_library {
 
     // Don't copy any output files to the dist.
     no_dist: true,
+
+    lint: {
+        warning_checks: ["SuspiciousIndentation"],
+    },
 }
 
 java_sdk_library {
@@ -396,6 +410,10 @@ java_sdk_library {
 
     // Don't copy any output files to the dist.
     no_dist: true,
+
+    lint: {
+        warning_checks: ["SuspiciousIndentation"],
+    },
 }
 
 //==========================================================
