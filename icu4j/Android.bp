@@ -37,6 +37,9 @@ java_defaults {
     // Use the same Java language version in the Android build configuration as used
     // in main/shared/build/common.properties for the ICU4J build configuration.
     java_version: "1.7",
+    lint: {
+        warning_checks: ["SuspiciousIndentation"],
+    },
 }
 
 java_library {
