@@ -451,6 +451,9 @@ java_test {
     system_modules: "art-module-intra-core-api-stubs-system-modules",
 
     errorprone: {
-        javacflags: ["-Xep:EqualsNull:WARN"],
+        javacflags: [
+            "-Xep:EqualsNull:WARN",
+            "-Xep:ArrayToString:WARN",
+        ],
     },
 }
