@@ -111,6 +111,9 @@ java_library_static {
         javacflags: [
             "-Xep:MissingOverride:OFF", // Ignore missing @Override.
             "-Xep:ConstantOverflow:WARN", // Known constant overflow in SplittableRandom
+            "-Xep:BoxedPrimitiveEquality:WARN",
+            "-Xep:ComparableType:WARN",
+            "-Xep:EmptyTopLevelDeclaration:WARN",
         ],
     },
     lint: {
@@ -455,6 +458,12 @@ java_test {
         javacflags: [
             "-Xep:EqualsNull:WARN",
             "-Xep:ArrayToString:WARN",
+            "-Xep:SelfEquals:WARN",
+            "-Xep:SelfComparison:WARN",
+            "-Xep:ReturnValueIgnored:WARN",
+            "-Xep:IdentityBinaryExpression:WARN",
+            "-Xep:BoxedPrimitiveEquality:WARN",
+            "-Xep:ComparableType:WARN",
         ],
     },
 }
