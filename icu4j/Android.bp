@@ -40,6 +40,21 @@ java_defaults {
     lint: {
         warning_checks: ["SuspiciousIndentation"],
     },
+    errorprone: {
+        javacflags: [
+            "-Xep:EmptyTopLevelDeclaration:WARN",
+            "-Xep:BoxedPrimitiveEquality:WARN",
+            "-Xep:EqualsHashCode:WARN",
+            "-Xep:ComparableType:WARN",
+            "-Xep:SelfAssignment:WARN",
+            "-Xep:ReturnValueIgnored:WARN",
+            "-Xep:SelfComparison:WARN",
+            "-Xep:SelfEquals:WARN",
+            "-Xep:MisusedDayOfYear:WARN",
+            "-Xep:MisusedWeekYear:WARN",
+            "-Xep:IdentityBinaryExpression:WARN",
+        ],
+    },
 }
 
 java_library {
