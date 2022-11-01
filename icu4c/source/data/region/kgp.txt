@@ -111,7 +111,7 @@ kgp{
         EZ{"Evoro Ga"}
         FI{"Fĩrỹnija"}
         FJ{"Fiji"}
-        FK{"Mỹrvĩnỹ Goj-vẽso"}
+        FK{"Mỹrvĩnỹ Goj-vẽso (Farkrỹn)"}
         FM{"Goj-vẽso-sĩ Kẽsir"}
         FO{"Faróve Goj-vẽso"}
         FR{"Frỹsa"}
@@ -134,7 +134,7 @@ kgp{
         GU{"Guvỹm"}
         GW{"Ginẽ-Misav"}
         GY{"Gijỹnỹ"}
-        HK{"Hãg Kãg, Sinỹ ERA"}
+        HK{"Hãg Kãg"}
         HM{"Hárni kar Magtonarni Goj-vẽso Ag"}
         HN{"Hãnura"}
         HR{"Kroasa"}
@@ -188,7 +188,7 @@ kgp{
         ML{"Mỹri"}
         MM{"Mĩjỹmỹr"}
         MN{"Mãngórija"}
-        MO{"Mỹkav, Sĩnỹ ERA"}
+        MO{"Mỹkav"}
         MP{"Nãrti-Mỹrijỹnỹ Goj-vẽso"}
         MQ{"Mỹrtinĩka"}
         MR{"Mãritỹnĩja"}
@@ -223,7 +223,7 @@ kgp{
         PM{"Sỹ Penru kar Mĩkerỹv"}
         PN{"Pinkajir Goj-vẽso"}
         PR{"Portu Hiku"}
-        PS{"Tehitórijo Parenhtinũ"}
+        PS{"Parenhtinỹ"}
         PT{"Portugar"}
         PW{"Paravu"}
         PY{"Paraguvaj"}
@@ -299,9 +299,6 @@ kgp{
         ZZ{"Reji’ỹv Veja tũ"}
     }
     Countries%short{
-        HK{"Hãg Kãg"}
-        MO{"Mỹkav"}
-        PS{"Parenhtinỹ"}
         UN{"ONU"}
         US{"EUA"}
     }
@@ -310,7 +307,6 @@ kgp{
         CG{"Kãgo"}
         CI{"Kote Nhivuva"}
         CZ{"Repumrika Séka"}
-        FK{"Mỹrvĩnỹ Goj-vẽso (Farkrỹn)"}
         SZ{"Suvasi-Ga"}
         TL{"Timãr-Rãjur Repumrika Nemãkratika"}
     }

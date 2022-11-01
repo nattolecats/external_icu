@@ -19,12 +19,12 @@ sr_Latn_BA{
         CP{"ostrvo Kliperton"}
         CZ{"Češka Republika"}
         DE{"Njemačka"}
-        FK{"Foklandska ostrva"}
+        FK{"Folklandska (Malvinska) ostrva"}
         FO{"Farska ostrva"}
         GS{"Južna Džordžija i Južna Sendvička ostrva"}
         GU{"Gvam"}
         GW{"Gvineja Bisao"}
-        HK{"Hongkong (SAO Kine)"}
+        HK{"Hongkong"}
         HM{"ostrvo Herd i ostrva Makdonald"}
         KM{"Komori"}
         KP{"Sjeverna Koreja"}
@@ -33,15 +33,12 @@ sr_Latn_BA{
         MP{"Sjeverna Marijanska ostrva"}
         NF{"ostrvo Norfok"}
         NU{"Nijue"}
-        PS{"palestinske teritorije"}
+        PS{"Palestina"}
         RE{"Reunion"}
         TF{"Francuske južne teritorije"}
         UM{"Spoljna ostrva SAD"}
         VC{"Sveti Vinsent i Grenadini"}
         VG{"Britanska Djevičanska ostrva"}
         VI{"Američka Djevičanska ostrva"}
-    }
-    Countries%variant{
-        FK{"Folklandska (Malvinska) ostrva"}
     }
 }

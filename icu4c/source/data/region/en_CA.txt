@@ -14,7 +14,7 @@ en_CA{
         LC{"Saint Lucia"}
         MF{"Saint Martin"}
         PM{"Saint-Pierre-et-Miquelon"}
-        PS{"Palestinian territories"}
+        PS{"Palestine"}
         SH{"Saint Helena"}
         SJ{"Svalbard and Jan Mayen"}
         ST{"São Tomé and Príncipe"}
@@ -27,8 +27,5 @@ en_CA{
         XA{"pseudo-accents"}
         XB{"pseudo-bidi"}
         ZZ{"unknown region"}
-    }
-    Countries%short{
-        MO{"Macau"}
     }
 }

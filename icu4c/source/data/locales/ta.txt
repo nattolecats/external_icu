@@ -734,8 +734,8 @@ ta{
                 "பிற்பகல்",
             }
             AmPmMarkersAbbr{
-                "முற்பகல்",
-                "பிற்பகல்",
+                "AM",
+                "PM",
             }
             AmPmMarkersNarrow{
                 "மு.ப",

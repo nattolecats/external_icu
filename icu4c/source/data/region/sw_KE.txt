@@ -63,7 +63,7 @@ sw_KE{
         PL{"Polandi"}
         PM{"St. Pierre na Miquelon"}
         PR{"Pwetoriko"}
-        PS{"Himaya za Palestina"}
+        PS{"Palestina"}
         PY{"Paragwai"}
         QA{"Katari"}
         QO{"Eneo la Oceania"}
