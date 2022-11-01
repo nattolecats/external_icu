@@ -1942,11 +1942,11 @@ public class CalendarRegressionTest extends android.icu.dev.test.TestFmwk {
 
                 DateFormat.getTimeInstance(DateFormat.SHORT, loc),
                 "DateFormat.getTimeInstance(DateFormat.SHORT, loc)",
-                "5:43 PM",
+                "5:43\u202FPM",
 
                 DateFormat.getDateTimeInstance(DateFormat.FULL, DateFormat.SHORT, loc),
                 "DateFormat.getDateTimeInstance(DateFormat.FULL, DateFormat.SHORT, loc)",
-                "Thursday, April 5, 2001 at 5:43 PM",
+                "Thursday, April 5, 2001 at 5:43\u202FPM",
 
                 DateFormat.getDateInstance(cal, DateFormat.SHORT, loc),
                 "DateFormat.getDateInstance(cal, DateFormat.SHORT, loc)",
@@ -1954,19 +1954,19 @@ public class CalendarRegressionTest extends android.icu.dev.test.TestFmwk {
 
                 DateFormat.getTimeInstance(cal, DateFormat.SHORT, loc),
                 "DateFormat.getTimeInstance(cal, DateFormat.SHORT, loc)",
-                "5:43 PM",
+                "5:43\u202FPM",
 
                 DateFormat.getDateTimeInstance(cal, DateFormat.FULL, DateFormat.SHORT, loc),
                 "DateFormat.getDateTimeInstance(cal, DateFormat.FULL, DateFormat.SHORT, loc)",
-                "Thursday, April 5, 2001 at 5:43 PM",
+                "Thursday, April 5, 2001 at 5:43\u202FPM",
 
                 cal.getDateTimeFormat(DateFormat.SHORT, DateFormat.FULL, loc),
                 "cal.getDateTimeFormat(DateFormat.SHORT, DateFormat.FULL, loc)",
-                "4/5/01, 5:43:53 PM Pacific Daylight Time",
+                "4/5/01, 5:43:53\u202FPM Pacific Daylight Time",
 
                 cal.getDateTimeFormat(DateFormat.FULL, DateFormat.SHORT, loc),
                 "cal.getDateTimeFormat(DateFormat.FULL, DateFormat.SHORT, loc)",
-                "Thursday, April 5, 2001 at 5:43 PM",
+                "Thursday, April 5, 2001 at 5:43\u202FPM",
             };
             for (int i=0; i<DATA.length; i+=3) {
                 DateFormat df = (DateFormat) DATA[i];
