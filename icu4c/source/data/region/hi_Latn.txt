@@ -4,6 +4,7 @@
 hi_Latn{
     %%Parent{"en_IN"}
     Countries{
+        TR{"Turkiye"}
         UM{"U.S. Outlying Islands"}
         VI{"U.S. Virgin Islands"}
         XB{"Pseudo-Bidirectional"}
