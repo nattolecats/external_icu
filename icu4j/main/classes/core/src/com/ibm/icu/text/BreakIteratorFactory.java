@@ -136,8 +136,7 @@ final class BreakIteratorFactory extends BreakIterator.BreakIteratorServiceShim 
                 typeKeyExt = "_" + keyValue;
             }
             String language = locale.getLanguage();
-            // lw=phrase is only supported in Japanese and Korean
-            if (language != null && (language.equals("ja") || language.equals("ko"))) {
+            if (language != null && language.equals("ja")) {
                 keyValue = locale.getKeywordValue("lw");
                 if (keyValue != null && keyValue.equals("phrase")) {
                     typeKeyExt += "_" + keyValue;

@@ -14,7 +14,6 @@ nn{
         151{"Aust-Europa"}
         AE{"Dei sameinte arabiske emirata"}
         AT{"Austerrike"}
-        BL{"Saint Barthélemy"}
         BY{"Kviterussland"}
         CC{"Kokosøyane"}
         CD{"Kongo-Kinshasa"}
@@ -24,7 +23,7 @@ nn{
         DO{"Den dominikanske republikken"}
         EU{"Den europeiske unionen"}
         EZ{"eurosona"}
-        FK{"Falklandsøyane (Islas Malvinas)"}
+        FK{"Falklandsøyane"}
         FO{"Færøyane"}
         GS{"Sør-Georgia og Sør-Sandwichøyane"}
         HM{"Heardøya og McDonaldøyane"}
@@ -57,6 +56,7 @@ nn{
     }
     Countries%variant{
         CI{"Elfenbeinskysten"}
+        FK{"Falklandsøyane (Islas Malvinas)"}
         TL{"Aust-Timor"}
     }
 }

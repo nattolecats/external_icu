@@ -1543,9 +1543,7 @@ public class TimeZoneTest extends TestFmwk
                 {"America/Montreal", "America/Toronto"},
                 {"America/Montserrat", "America/Puerto_Rico"},
                 {"America/Nassau", "America/Toronto"},
-                {"America/Nipigon", "America/Toronto"},
                 {"America/Port_of_Spain", "America/Puerto_Rico"},
-                {"America/Rainy_River", "America/Winnipeg"},
                 {"America/Santa_Isabel", "America/Tijuana"},
                 {"America/Shiprock", "America/Denver"},
                 {"America/St_Barthelemy", "America/Puerto_Rico"},
@@ -1553,7 +1551,6 @@ public class TimeZoneTest extends TestFmwk
                 {"America/St_Lucia", "America/Puerto_Rico"},
                 {"America/St_Thomas", "America/Puerto_Rico"},
                 {"America/St_Vincent", "America/Puerto_Rico"},
-                {"America/Thunder_Bay", "America/Toronto"},
                 {"America/Tortola", "America/Puerto_Rico"},
                 {"America/Virgin", "America/Puerto_Rico"},
                 {"Antarctica/DumontDUrville", "Pacific/Port_Moresby"},
@@ -2350,6 +2347,36 @@ public class TimeZoneTest extends TestFmwk
         assertFalse("Compare TimeZone and TimeZoneAdapter", icuChicago.equals(icuChicagoWrapped));
         assertFalse("Compare TimeZoneAdapter with TimeZone", icuChicagoWrapped.equals(icuChicago));
         assertTrue("Compare two TimeZoneAdapters", icuChicagoWrapped.equals(icuChicagoWrapped2));
+    }
+
+    @Test
+    public void TestCasablancaNameAndOffset22041() {
+        String id = "Africa/Casablanca";
+        TimeZone zone = TimeZone.getTimeZone(id);
+        String standardName = zone.getDisplayName(false, TimeZone.LONG, Locale.ENGLISH);
+        String summerName = zone.getDisplayName(true, TimeZone.LONG, Locale.ENGLISH);
+        assertEquals("TimeZone name for Africa/Casablanca should not contain '+02' since it is located in UTC, but got "
+                     + standardName, -1, standardName.indexOf("+02"));
+        assertEquals("TimeZone name for Africa/Casablanca should not contain '+02' since it is located in UTC, but got "
+                     + summerName, -1, summerName.indexOf("+02"));
+        int[] offsets = new int[2]; // raw = offsets[0], dst = offsets[1]
+        zone.getOffset((new Date()).getTime(), false, offsets);
+        int raw = offsets[0];
+        assertEquals("getRawOffset() and the raw from getOffset(now, false, offset) should not be different but got",
+                     zone.getRawOffset(), raw);
+    }
+
+    @Test
+    public void TestRawOffsetAndOffsetConsistency22041() {
+        long now = (new Date()).getTime();
+        int[] offsets = new int[2]; // raw = offsets[0], dst = offsets[1]
+        for (String id : TimeZone.getAvailableIDs()) {
+            TimeZone zone = TimeZone.getTimeZone(id);
+            zone.getOffset((new Date()).getTime(), false, offsets);
+            int raw = offsets[0];
+            assertEquals("getRawOffset() and the raw from getOffset(now, false, offset) should not be different but got",
+                         zone.getRawOffset(), raw);
+        }
     }
 }
 

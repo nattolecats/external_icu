@@ -111,7 +111,7 @@ yrl{
         EZ{"euru suna"}
         FI{"Firãdiya"}
         FJ{"Fiyi"}
-        FK{"Kapuãma-ita Mawina (Kapuãma-ita Falkland)"}
+        FK{"Kapuãma-ita Mawina"}
         FM{"Mikuruneziya"}
         FO{"Kapuãma-ita Faruwe"}
         FR{"Frãsa"}
@@ -134,7 +134,7 @@ yrl{
         GU{"Guwã"}
         GW{"Giné Bisau"}
         GY{"Giyana"}
-        HK{"Hũgi Kũgi"}
+        HK{"Hũgi Kũgi, RAE Xina yara"}
         HM{"Kapuãma-ita Heard asuí McDonald"}
         HN{"Ũdura"}
         HR{"Kuruwasiya"}
@@ -188,7 +188,7 @@ yrl{
         ML{"Mari"}
         MM{"Miyamá (Bimãniya)"}
         MN{"Mũguriya"}
-        MO{"Makau"}
+        MO{"Makau, RAE Xina yara"}
         MP{"Kapuãma-ita Mariyãna Nuti suí"}
         MQ{"Matinika"}
         MR{"Mauritaniya"}
@@ -223,7 +223,7 @@ yrl{
         PM{"Sã Peduru asuí Mikelãu"}
         PN{"Kapuãma-ita Pitcairn"}
         PR{"Igarapawa Riku"}
-        PS{"Paretina"}
+        PS{"Tetãma Paretinu-ita yara"}
         PT{"Putugau"}
         PW{"Parau"}
         PY{"Paraguwai"}
@@ -299,6 +299,9 @@ yrl{
         ZZ{"Tetãma Ũbawaukuamamẽ"}
     }
     Countries%short{
+        HK{"Hũgi Kũgi"}
+        MO{"Makau"}
+        PS{"Paretina"}
         UN{"ONU"}
         US{"EUA"}
     }
@@ -307,6 +310,7 @@ yrl{
         CG{"Kũgu"}
         CI{"Kute Divuá"}
         CZ{"Repubirika Xeka"}
+        FK{"Kapuãma-ita Mawina (Kapuãma-ita Falkland)"}
         SZ{"Suwasiretãma"}
         TL{"Repubirika Demukaratika Timu-Semusawa"}
     }

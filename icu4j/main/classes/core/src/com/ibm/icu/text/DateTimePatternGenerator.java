@@ -315,7 +315,7 @@ public class DateTimePatternGenerator implements Freezable<DateTimePatternGenera
     private void setDateTimeFromCalendar(ULocale uLocale) {
         Calendar cal = Calendar.getInstance(uLocale);
         for (int style = DateFormat.FULL; style <= DateFormat.SHORT; style++) {
-            String dateTimeFormat = Calendar.getDateTimePattern(cal, uLocale, style);
+            String dateTimeFormat = Calendar.getDateAtTimePattern(cal, uLocale, style);
             setDateTimeFormat(style, dateTimeFormat);
         }
     }
@@ -358,6 +358,7 @@ public class DateTimePatternGenerator implements Freezable<DateTimePatternGenera
 
         String language = uLocale.getLanguage();
         String country = uLocale.getCountry();
+        
         if (language.isEmpty() || country.isEmpty()) {
             // Note: addLikelySubtags is documented not to throw in Java,
             // unlike in C++.
@@ -366,6 +367,15 @@ public class DateTimePatternGenerator implements Freezable<DateTimePatternGenera
             country = max.getCountry();
         }
 
+        String regionOverride = uLocale.getKeywordValue("rg");
+        if (regionOverride != null && !regionOverride.isEmpty()) {
+            // chop off any subdivision codes that may have been included
+            if (regionOverride.length() > 2) {
+                regionOverride = regionOverride.substring(0, 2);
+            }
+            country = regionOverride;
+        }
+        
         if (language.isEmpty()) {
             // Unexpected, but fail gracefully
             language = "und";
@@ -629,44 +639,16 @@ public class DateTimePatternGenerator implements Freezable<DateTimePatternGenera
         return getBestPattern(skeleton, null, options);
     }
 
-    // BEGIN Android-added: http://b/170233598 Allow duplicate fields
-    /**
-     * Return the best pattern matching the input skeleton. It is guaranteed to
-     * have all of the fields in the skeleton.
-     *
-     * @param skeleton The skeleton is a pattern containing only the variable fields.
-     *            For example, "MMMdd" and "mmhh" are skeletons.
-     * @param options MATCH_xxx options for forcing the length of specified fields in
-     *            the returned pattern to match those in the skeleton (when this would
-     *            not happen otherwise). For default behavior, use MATCH_NO_OPTIONS.
-     * @param allowDuplicateFields allows duplicated field in the skeleton
-     * @return Best pattern matching the input skeleton (and options).
-     * @internal
-     */
-    public String getBestPattern(String skeleton, int options, boolean allowDuplicateFields) {
-        return getBestPattern(skeleton, null, options, allowDuplicateFields);
-    }
-
-    private String getBestPattern(String skeleton, DateTimeMatcher skipMatcher, int options) {
-        return getBestPattern(skeleton, skipMatcher, options, false);
-    }
-    // END Android-added: http://b/170233598 Allow duplicate fields
-
     /*
      * getBestPattern which takes optional skip matcher
      */
-    // Android-changed: http://b/170233598 Allow duplicate fields
-    // private String getBestPattern(String skeleton, DateTimeMatcher skipMatcher, int options) {
-    private String getBestPattern(String skeleton, DateTimeMatcher skipMatcher, int options,
-            boolean allowDuplicateFields) {
+    private String getBestPattern(String skeleton, DateTimeMatcher skipMatcher, int options) {
         EnumSet<DTPGflags> flags = EnumSet.noneOf(DTPGflags.class);
         // Replace hour metacharacters 'j', 'C', and 'J', set flags as necessary
         String skeletonMapped = mapSkeletonMetacharacters(skeleton, flags);
         String datePattern, timePattern;
         synchronized(this) {
-            // Android-changed: http://b/170233598 Allow duplicate fields
-            // current.set(skeletonMapped, fp, false);
-            current.set(skeletonMapped, fp, allowDuplicateFields);
+            current.set(skeletonMapped, fp, false);
             PatternWithMatcher bestWithMatcher = getBestRaw(current, -1, _distanceInfo, skipMatcher);
             if (_distanceInfo.missingFieldMask == 0 && _distanceInfo.extraFieldMask == 0) {
                 // we have a good item. Adjust the field types
@@ -1525,7 +1507,7 @@ public class DateTimePatternGenerator implements Freezable<DateTimePatternGenera
      * the pattern map from parent locales.
      *
      * @param key of the availableFormatMask in CLDR
-     * @return TRUE if the corresponding slot of CLDR_AVAIL_FORMAT_KEY[]
+     * @return true if the corresponding slot of CLDR_AVAIL_FORMAT_KEY[]
      * has been added to DateTimePatternGenerator.
      * @stable ICU 3.6
      */
@@ -2822,8 +2804,8 @@ public class DateTimePatternGenerator implements Freezable<DateTimePatternGenera
                     char ch1 = original.getFieldChar(field);
                     char ch2 = value.charAt(0);
                     if ( allowDuplicateFields ||
-                            (ch1 == 'r' && ch2 == 'U') ||
-                            (ch1 == 'U' && ch2 == 'r') ) {
+                            (ch1 == 'r' && (ch2 == 'U' || ch2 == 'y')) ||
+                            ((ch1 == 'U' || ch1 == 'y') && ch2 == 'r') ) {
                         continue;
                     }
                     throw new IllegalArgumentException("Conflicting fields:\t"

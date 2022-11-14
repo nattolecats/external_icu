@@ -111,7 +111,7 @@ it{
         EZ{"Eurozona"}
         FI{"Finlandia"}
         FJ{"Figi"}
-        FK{"Isole Falkland (Isole Malvine)"}
+        FK{"Isole Falkland"}
         FM{"Micronesia"}
         FO{"Isole Fær Øer"}
         FR{"Francia"}
@@ -119,7 +119,7 @@ it{
         GB{"Regno Unito"}
         GD{"Grenada"}
         GE{"Georgia"}
-        GF{"Guyana francese"}
+        GF{"Guyana Francese"}
         GG{"Guernsey"}
         GH{"Ghana"}
         GI{"Gibilterra"}
@@ -129,12 +129,12 @@ it{
         GP{"Guadalupa"}
         GQ{"Guinea Equatoriale"}
         GR{"Grecia"}
-        GS{"Georgia del Sud e Sandwich australi"}
+        GS{"Georgia del Sud e Sandwich Australi"}
         GT{"Guatemala"}
         GU{"Guam"}
         GW{"Guinea-Bissau"}
         GY{"Guyana"}
-        HK{"Hong Kong"}
+        HK{"RAS di Hong Kong"}
         HM{"Isole Heard e McDonald"}
         HN{"Honduras"}
         HR{"Croazia"}
@@ -188,7 +188,7 @@ it{
         ML{"Mali"}
         MM{"Myanmar (Birmania)"}
         MN{"Mongolia"}
-        MO{"Macao"}
+        MO{"RAS di Macao"}
         MP{"Isole Marianne settentrionali"}
         MQ{"Martinica"}
         MR{"Mauritania"}
@@ -213,7 +213,7 @@ it{
         NU{"Niue"}
         NZ{"Nuova Zelanda"}
         OM{"Oman"}
-        PA{"Panamá"}
+        PA{"Panama"}
         PE{"Perù"}
         PF{"Polinesia francese"}
         PG{"Papua Nuova Guinea"}
@@ -223,7 +223,7 @@ it{
         PM{"Saint-Pierre e Miquelon"}
         PN{"Isole Pitcairn"}
         PR{"Portorico"}
-        PS{"Palestina"}
+        PS{"Territori palestinesi"}
         PT{"Portogallo"}
         PW{"Palau"}
         PY{"Paraguay"}
@@ -254,7 +254,7 @@ it{
         SV{"El Salvador"}
         SX{"Sint Maarten"}
         SY{"Siria"}
-        SZ{"Swaziland"}
+        SZ{"eSwatini"}
         TA{"Tristan da Cunha"}
         TC{"Isole Turks e Caicos"}
         TD{"Ciad"}
@@ -274,7 +274,7 @@ it{
         TZ{"Tanzania"}
         UA{"Ucraina"}
         UG{"Uganda"}
-        UM{"Altre isole americane del Pacifico"}
+        UM{"Isole Minori Esterne degli Stati Uniti"}
         UN{"Nazioni Unite"}
         US{"Stati Uniti"}
         UY{"Uruguay"}
@@ -300,6 +300,9 @@ it{
     }
     Countries%short{
         GB{"UK"}
+        HK{"Hong Kong"}
+        MO{"Macao"}
+        PS{"Palestina"}
         UN{"ONU"}
         US{"USA"}
     }
@@ -308,7 +311,10 @@ it{
         CG{"Congo (Repubblica)"}
         CI{"Côte d’Ivoire"}
         CZ{"Repubblica Ceca"}
+        FK{"Isole Falkland (Isole Malvine)"}
+        NZ{"Nuova Zelanda (Aotearoa)"}
         SZ{"Regno di eSwatini"}
         TL{"Timor Leste"}
+        TR{"Türkiye"}
     }
 }

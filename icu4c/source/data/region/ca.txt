@@ -49,7 +49,7 @@ ca{
         AT{"Àustria"}
         AU{"Austràlia"}
         AW{"Aruba"}
-        AX{"Illes Aland"}
+        AX{"Illes Åland"}
         AZ{"Azerbaidjan"}
         BA{"Bòsnia i Hercegovina"}
         BB{"Barbados"}
@@ -64,7 +64,7 @@ ca{
         BM{"Bermudes"}
         BN{"Brunei"}
         BO{"Bolívia"}
-        BQ{"Antilles Neerlandeses"}
+        BQ{"Carib Neerlandès"}
         BR{"Brasil"}
         BS{"Bahames"}
         BT{"Bhutan"}
@@ -111,7 +111,7 @@ ca{
         EZ{"zona euro"}
         FI{"Finlàndia"}
         FJ{"Fiji"}
-        FK{"Illes Malvines (Illes Falkland)"}
+        FK{"Illes Malvines"}
         FM{"Micronèsia"}
         FO{"Illes Fèroe"}
         FR{"França"}
@@ -134,7 +134,7 @@ ca{
         GU{"Guam"}
         GW{"Guinea Bissau"}
         GY{"Guyana"}
-        HK{"Hong Kong"}
+        HK{"Hong Kong (RAE Xina)"}
         HM{"Illa Heard i Illes McDonald"}
         HN{"Hondures"}
         HR{"Croàcia"}
@@ -156,7 +156,7 @@ ca{
         JO{"Jordània"}
         JP{"Japó"}
         KE{"Kenya"}
-        KG{"Kirguizistan"}
+        KG{"Kirguizstan"}
         KH{"Cambodja"}
         KI{"Kiribati"}
         KM{"Comores"}
@@ -188,8 +188,8 @@ ca{
         ML{"Mali"}
         MM{"Myanmar (Birmània)"}
         MN{"Mongòlia"}
-        MO{"Macau"}
-        MP{"Illes Mariannes del Nord"}
+        MO{"Macau (RAE Xina)"}
+        MP{"Illes Mariannes Septentrionals"}
         MQ{"Martinica"}
         MR{"Mauritània"}
         MS{"Montserrat"}
@@ -223,7 +223,7 @@ ca{
         PM{"Saint-Pierre-et-Miquelon"}
         PN{"Illes Pitcairn"}
         PR{"Puerto Rico"}
-        PS{"Palestina"}
+        PS{"Territoris palestins"}
         PT{"Portugal"}
         PW{"Palau"}
         PY{"Paraguai"}
@@ -254,7 +254,7 @@ ca{
         SV{"El Salvador"}
         SX{"Sint Maarten"}
         SY{"Síria"}
-        SZ{"eSwatini"}
+        SZ{"Eswatini"}
         TA{"Tristan da Cunha"}
         TC{"Illes Turks i Caicos"}
         TD{"Txad"}
@@ -263,7 +263,7 @@ ca{
         TH{"Tailàndia"}
         TJ{"Tadjikistan"}
         TK{"Tokelau"}
-        TL{"Timor Oriental"}
+        TL{"Timor-Leste"}
         TM{"Turkmenistan"}
         TN{"Tunísia"}
         TO{"Tonga"}
@@ -300,6 +300,9 @@ ca{
     }
     Countries%short{
         GB{"RU"}
+        HK{"Hong Kong"}
+        MO{"Macau"}
+        PS{"Palestina"}
         UN{"ONU"}
         US{"EUA"}
     }
@@ -308,6 +311,9 @@ ca{
         CG{"República del Congo"}
         CI{"Costa d’Ivori"}
         CZ{"República Txeca"}
+        FK{"Illes Malvines (Illes Falkland)"}
+        NZ{"Aotearoa (Nova Zelanda)"}
         SZ{"Swazilàndia"}
+        TL{"Timor Oriental"}
     }
 }

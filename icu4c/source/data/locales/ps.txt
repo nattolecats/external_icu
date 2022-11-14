@@ -16,11 +16,6 @@ ps{
     ExemplarCharactersPunctuation{"[، ; \\: ! ۔ ' ‘ ( ) \\[ \\] \\{ \\} /]"}
     NumberElements{
         arabext{
-            patterns{
-                currencyFormat{"#,##0.00 ¤"}
-                percentFormat{"#,##0%"}
-                scientificFormat{"#E0"}
-            }
             symbols{
                 exponential{"×۱۰^"}
                 infinity{"∞"}
@@ -40,8 +35,7 @@ ps{
             }
             patterns{
                 accountingFormat{"¤#,##0.00;(¤#,##0.00)"}
-                currencyFormat{"#,##0.00 ¤"}
-                percentFormat{"#,##0%"}
+                currencyPatternAppendISO{"{0} ¤¤"}
             }
             patternsLong{
                 decimalFormat{
@@ -146,6 +140,16 @@ ps{
                         other{"000T ¤"}
                     }
                 }
+                currencyFormat%alphaNextToNumber{
+                    10000000000{
+                        one{"¤ 00B"}
+                        other{"¤00B"}
+                    }
+                    100000000000{
+                        one{"¤ 000B"}
+                        other{"¤ 000B"}
+                    }
+                }
                 decimalFormat{
                     1000{
                         one{"0K"}
@@ -223,6 +227,7 @@ ps{
         native{"arabext"}
     }
     calendar{
+        default{"persian"}
         generic{
             DateTimePatterns{
                 "H:mm:ss (zzzz)",
@@ -589,7 +594,7 @@ ps{
                     "م.",
                 }
                 abbreviated%variant{
-                    "BCE",
+                    "له میلاد وړاندې",
                     "ع.پ",
                 }
                 narrow{
@@ -2152,6 +2157,20 @@ ps{
                 "[\\-‒⁻₋−➖﹣－]",
                 "[,،٫⹁、︐︑﹐﹑，､]",
                 "[+⁺₊➕﬩﹢＋]",
+            }
+        }
+    }
+    personNames{
+        nameOrderLocales{
+            givenFirst{
+                "und",
+                "ps",
+            }
+            surnameFirst{
+                "ko",
+                "vi",
+                "yue",
+                "zh",
             }
         }
     }

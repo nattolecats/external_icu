@@ -204,7 +204,7 @@ ha{
         NC{"Kaledoniya Sabuwa"}
         NE{"Nijar"}
         NF{"Tsibirin Narfalk"}
-        NG{"Najeriya"}
+        NG{"Nijeriya"}
         NI{"Nikaraguwa"}
         NL{"Holan"}
         NO{"Norwe"}
@@ -223,7 +223,7 @@ ha{
         PM{"San Piyar da Mikelan"}
         PN{"Pitakarin"}
         PR{"Porto Riko"}
-        PS{"Palasɗinu"}
+        PS{"Yankunan Palasɗinu"}
         PT{"Portugal"}
         PW{"Palau"}
         PY{"Faragwai"}
@@ -298,9 +298,13 @@ ha{
         ZW{"Zimbabuwe"}
         ZZ{"Yanki da ba a sani ba"}
     }
+    Countries%short{
+        PS{"Palasɗinu"}
+    }
     Countries%variant{
         CD{"Kongo (DRC)"}
         CG{"Jamhuriyar Kongo"}
+        NZ{"Aotearoa Nuzilan"}
         SZ{"Suwazilan"}
     }
 }

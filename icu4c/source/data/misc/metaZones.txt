@@ -868,6 +868,7 @@ metaZones:table(nofallback){
         wall{"Wallis"}
         yaku{"Yakutsk"}
         yeka{"Yekaterinburg"}
+        yuko{"Yukon"}
     }
     metazoneInfo{
         "Africa:Abidjan"{
@@ -1652,11 +1653,6 @@ metaZones:table(nofallback){
             {
                 "Mexico_Pacific",
                 "1998-04-05 09:00",
-                "2022-10-30 08:00",
-            }
-            {
-                "America_Central",
-                "2022-10-30 08:00",
                 "9999-12-31 23:59",
             }
         }
@@ -2368,11 +2364,6 @@ metaZones:table(nofallback){
             {
                 "America_Mountain",
                 "1998-04-05 09:00",
-                "2022-10-30 08:00",
-            }
-            {
-                "America_Central",
-                "2022-10-30 08:00",
                 "9999-12-31 23:59",
             }
         }

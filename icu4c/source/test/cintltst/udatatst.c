@@ -31,8 +31,9 @@
 #include "cintltst.h"
 #include "ubrkimpl.h"
 #include "toolutil.h" /* for uprv_fileExists() */
-#include <stdlib.h>
+#include <stdbool.h>
 #include <stdio.h>
+#include <stdlib.h>
 
 /* includes for TestSwapData() */
 #include "udataswp.h"
@@ -570,7 +571,7 @@ isAcceptable1(void *context,
         pInfo->formatVersion[0]==3 )
     {
         log_verbose("The data from \"%s.%s\" IS acceptable using the verifying function isAcceptable1()\n", name, type);
-        return TRUE;
+        return true;
     } else {
         log_verbose("The data from \"%s.%s\" IS NOT acceptable using the verifying function isAcceptable1():-\n"
             "\tsize              = %d\n"
@@ -583,7 +584,7 @@ isAcceptable1(void *context,
             pInfo->dataVersion[0], pInfo->dataFormat[0], pInfo->dataFormat[1], pInfo->dataFormat[2], 
             pInfo->dataFormat[3]);  
         log_verbose("Call another verifying function to accept the data\n");
-        return FALSE;
+        return false;
     }
 }
 
@@ -607,11 +608,11 @@ isAcceptable2(void *context,
         pInfo->dataVersion[0]==unicodeVersion[0] )
     {
         log_verbose("The data from \"%s.%s\" IS acceptable using the verifying function isAcceptable2()\n", name, type);
-        return TRUE;
+        return true;
     } else {
         log_verbose("The data from \"%s.%s\" IS NOT acceptable using the verifying function isAcceptable2()\n", name, type);
 
-        return FALSE;
+        return false;
     }
 
 
@@ -633,10 +634,10 @@ isAcceptable3(void *context,
         pInfo->dataVersion[0]==1   ) {
         log_verbose("The data from \"%s.%s\" IS acceptable using the verifying function isAcceptable3()\n", name, type);
 
-        return TRUE;
+        return true;
     } else {
         log_verbose("The data from \"%s.%s\" IS NOT acceptable using the verifying function isAcceptable3()\n", name, type);
-        return FALSE;
+        return false;
     }
 
 
@@ -707,17 +708,13 @@ static void TestUDataOpenChoiceDemo1() {
     type="typ";
     result=udata_openChoice(fullTestDataPath, type, name[3], isAcceptable1, NULL, &status);
     if(status != U_INVALID_FORMAT_ERROR){
-        // Android-changed: Android does not try to load ICU data from other files. See  gDataFileAccess = UDATA_NO_FILES in udata.cpp.
-        // log_err("FAIL: udata_openChoice() did not fail as expected. name=%s, type=%s, \n errorcode=%s\n", name[3], type, myErrorName(status));
-        log_data_err("FAIL: udata_openChoice() did not fail as expected. name=%s, type=%s, \n errorcode=%s\n", name[3], type, myErrorName(status));
+        log_err("FAIL: udata_openChoice() did not fail as expected. name=%s, type=%s, \n errorcode=%s\n", name[3], type, myErrorName(status));
     }
 
     status=U_USELESS_COLLATOR_ERROR;
     result=udata_openChoice(fullTestDataPath, type, name[3], isAcceptable1, NULL, &status);
     if(status != U_USELESS_COLLATOR_ERROR){
-        // Android-changed: Android does not try to load ICU data from other files. See  gDataFileAccess = UDATA_NO_FILES in udata.cpp.
-        // log_err("FAIL: udata_openChoice() did not fail as expected. name=%s, type=%s, \n errorcode=%s\n", name[3], type, myErrorName(status));
-        log_data_err("FAIL: udata_openChoice() did not fail as expected. name=%s, type=%s, \n errorcode=%s\n", name[3], type, myErrorName(status));
+        log_err("FAIL: udata_openChoice() did not fail as expected. name=%s, type=%s, \n errorcode=%s\n", name[3], type, myErrorName(status));
     }
 }
 
@@ -737,10 +734,10 @@ isAcceptable(void *context,
         *((int*)context) == 2 ) {
         log_verbose("The data from\"%s.%s\" IS acceptable using the verifying function isAcceptable()\n", name, type);
 
-        return TRUE;
+        return true;
     } else {
         log_verbose("The data from \"%s.%s\" IS NOT acceptable using the verifying function isAcceptable()\n", name, type);
-        return FALSE;
+        return false;
     }
 }
 

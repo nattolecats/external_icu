@@ -17,8 +17,9 @@
 
 /*The main root for C API tests*/
 
-#include <stdlib.h>
+#include <stdbool.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 #include "unicode/utypes.h"
 #include "unicode/putil.h"
@@ -46,7 +47,7 @@
 /* Array used as a queue */
 static void * ctst_allocated_stuff[CTST_MAX_ALLOC] = {0};
 static int ctst_allocated = 0;
-static UBool ctst_free = FALSE;
+static UBool ctst_free = false;
 static int ctst_allocated_total = 0;
 
 #define CTST_LEAK_CHECK 1
@@ -54,6 +55,8 @@ static int ctst_allocated_total = 0;
 #ifdef CTST_LEAK_CHECK
 static void ctst_freeAll(void);
 #endif
+
+static char* _testDataPath=NULL;
 
 /*
  *  Forward Declarations
@@ -110,12 +113,12 @@ int main(int argc, const char* const argv[])
      *  Whether or not this test succeeds, we want to cleanup and reinitialize
      *  with a data path so that data loading from individual files can be tested.
      */
-    defaultDataFound = TRUE;
+    defaultDataFound = true;
     u_init(&errorCode);
     if (U_FAILURE(errorCode)) {
         fprintf(stderr,
             "#### Note:  ICU Init without build-specific setDataDirectory() failed. %s\n", u_errorName(errorCode));
-        defaultDataFound = FALSE;
+        defaultDataFound = false;
     }
     u_cleanup();
 #ifdef URES_DEBUG
@@ -249,11 +252,7 @@ int main(int argc, const char* const argv[])
         (int)((diffTime%U_MILLIS_PER_MINUTE)/U_MILLIS_PER_SECOND),
         (int)(diffTime%U_MILLIS_PER_SECOND));
 
-#ifdef ZERO_EXIT_CODE_FOR_FAILURES
-    return 0;
-#else
     return nerrors ? 1 : 0;
-#endif
 }
 
 /*
@@ -295,6 +294,139 @@ static void ctest_appendToDataDirectory(const char *toAppend)
 }
 */
 
+/* returns the path to icu/source/data */
+const char *  ctest_dataSrcDir()
+{
+    static const char *dataSrcDir = NULL;
+
+    if(dataSrcDir) {
+        return dataSrcDir;
+    }
+
+    /* U_TOPSRCDIR is set by the makefiles on UNIXes when building cintltst and intltst
+    //              to point to the top of the build hierarchy, which may or
+    //              may not be the same as the source directory, depending on
+    //              the configure options used.  At any rate,
+    //              set the data path to the built data from this directory.
+    //              The value is complete with quotes, so it can be used
+    //              as-is as a string constant.
+    */
+#if defined (U_TOPSRCDIR)
+    {
+        dataSrcDir = U_TOPSRCDIR  U_FILE_SEP_STRING "data" U_FILE_SEP_STRING;
+    }
+#else
+
+    /* On Windows, the file name obtained from __FILE__ includes a full path.
+     *             This file is "wherever\icu\source\test\cintltst\cintltst.c"
+     *             Change to    "wherever\icu\source\data"
+     */
+    {
+        static char p[sizeof(__FILE__) + 20];
+        char *pBackSlash;
+        int i;
+
+        strcpy(p, __FILE__);
+        /* We want to back over three '\' chars.                            */
+        /*   Only Windows should end up here, so looking for '\' is safe.   */
+        for (i=1; i<=3; i++) {
+            pBackSlash = strrchr(p, U_FILE_SEP_CHAR);
+            if (pBackSlash != NULL) {
+                *pBackSlash = 0;        /* Truncate the string at the '\'   */
+            }
+        }
+
+        if (pBackSlash != NULL) {
+            /* We found and truncated three names from the path.
+             *  Now append "source\data" and set the environment
+             */
+            strcpy(pBackSlash, U_FILE_SEP_STRING "data" U_FILE_SEP_STRING );
+            dataSrcDir = p;
+        }
+        else {
+            /* __FILE__ on MSVC7 does not contain the directory */
+            FILE *file = fopen(".."U_FILE_SEP_STRING".."U_FILE_SEP_STRING "data" U_FILE_SEP_STRING "Makefile.in", "r");
+            if (file) {
+                fclose(file);
+                dataSrcDir = ".."U_FILE_SEP_STRING".."U_FILE_SEP_STRING "data" U_FILE_SEP_STRING;
+            }
+            else {
+                dataSrcDir = ".."U_FILE_SEP_STRING".."U_FILE_SEP_STRING".."U_FILE_SEP_STRING".."U_FILE_SEP_STRING "data" U_FILE_SEP_STRING;
+            }
+        }
+    }
+#endif
+
+    return dataSrcDir;
+
+}
+
+/* returns the path to icu/source/data/out */
+const char *ctest_dataOutDir()
+{
+    static const char *dataOutDir = NULL;
+
+    if(dataOutDir) {
+        return dataOutDir;
+    }
+
+    /* U_TOPBUILDDIR is set by the makefiles on UNIXes when building cintltst and intltst
+    //              to point to the top of the build hierarchy, which may or
+    //              may not be the same as the source directory, depending on
+    //              the configure options used.  At any rate,
+    //              set the data path to the built data from this directory.
+    //              The value is complete with quotes, so it can be used
+    //              as-is as a string constant.
+    */
+#if defined (U_TOPBUILDDIR)
+    {
+        dataOutDir = U_TOPBUILDDIR "data"U_FILE_SEP_STRING"out"U_FILE_SEP_STRING;
+    }
+#else
+
+    /* On Windows, the file name obtained from __FILE__ includes a full path.
+     *             This file is "wherever\icu\source\test\cintltst\cintltst.c"
+     *             Change to    "wherever\icu\source\data"
+     */
+    {
+        static char p[sizeof(__FILE__) + 20];
+        char *pBackSlash;
+        int i;
+
+        strcpy(p, __FILE__);
+        /* We want to back over three '\' chars.                            */
+        /*   Only Windows should end up here, so looking for '\' is safe.   */
+        for (i=1; i<=3; i++) {
+            pBackSlash = strrchr(p, U_FILE_SEP_CHAR);
+            if (pBackSlash != NULL) {
+                *pBackSlash = 0;        /* Truncate the string at the '\'   */
+            }
+        }
+
+        if (pBackSlash != NULL) {
+            /* We found and truncated three names from the path.
+             *  Now append "source\data" and set the environment
+             */
+            strcpy(pBackSlash, U_FILE_SEP_STRING "data" U_FILE_SEP_STRING "out" U_FILE_SEP_STRING);
+            dataOutDir = p;
+        }
+        else {
+            /* __FILE__ on MSVC7 does not contain the directory */
+            FILE *file = fopen(".."U_FILE_SEP_STRING".."U_FILE_SEP_STRING "data" U_FILE_SEP_STRING "Makefile.in", "r");
+            if (file) {
+                fclose(file);
+                dataOutDir = ".."U_FILE_SEP_STRING".."U_FILE_SEP_STRING "data" U_FILE_SEP_STRING "out" U_FILE_SEP_STRING;
+            }
+            else {
+                dataOutDir = ".."U_FILE_SEP_STRING".."U_FILE_SEP_STRING".."U_FILE_SEP_STRING".."U_FILE_SEP_STRING "data" U_FILE_SEP_STRING "out" U_FILE_SEP_STRING;
+            }
+        }
+    }
+#endif
+
+    return dataOutDir;
+}
+
 /*  ctest_setICU_DATA  - if the ICU_DATA environment variable is not already
  *                       set, try to deduce the directory in which ICU was built,
  *                       and set ICU_DATA to "icu/source/data" in that location.
@@ -305,10 +437,14 @@ static void ctest_appendToDataDirectory(const char *toAppend)
  *                       tests dynamically load some data.
  */
 void ctest_setICU_DATA() {
-    // Android-changed: Do not u_setDataDirectory because libicuuc.so initializes itself.
-    #if !defined(ANDROID_USE_ICU_REG)
-    u_setDataDirectory(ctest_dataOutDir());
-    #endif
+
+    /* No location for the data dir was identifiable.
+     *   Add other fallbacks for the test data location here if the need arises
+     */
+    if (getenv("ICU_DATA") == NULL) {
+        /* If ICU_DATA isn't set, set it to the usual location */
+        u_setDataDirectory(ctest_dataOutDir());
+    }
 }
 
 /*  These tests do cleanup and reinitialize ICU in the course of their operation.
@@ -332,16 +468,16 @@ UBool ctest_resetICU() {
     u_cleanup();
     if (!initArgs(gOrigArgc, gOrigArgv, NULL, NULL)) {
         /* Error already displayed. */
-        return FALSE;
+        return false;
     }
-    ctest_setICU_DATA();
+    u_setDataDirectory(dataDir);
     free(dataDir);
     u_init(&status);
     if (U_FAILURE(status)) {
         log_err_status(status, "u_init failed with %s\n", u_errorName(status));
-        return FALSE;
+        return false;
     }
-    return TRUE;
+    return true;
 }
 
 UChar* CharsToUChars(const char* str) {
@@ -392,14 +528,56 @@ char *aescstrdup(const UChar* unichars,int32_t length){
     target = newString;
     targetLimit = newString+sizeof(char) * 8 * (length +1);
     ucnv_setFromUCallBack(conv, UCNV_FROM_U_CALLBACK_ESCAPE, UCNV_ESCAPE_C, &cb, &p, &errorCode);
-    ucnv_fromUnicode(conv,&target,targetLimit, &unichars, (UChar*)(unichars+length),NULL,TRUE,&errorCode);
+    ucnv_fromUnicode(conv,&target,targetLimit, &unichars, (UChar*)(unichars+length),NULL,true,&errorCode);
     ucnv_close(conv);
     *target = '\0';
     return newString;
 }
 
-const char* loadTestData(UErrorCode* err) {
-    return ctest_loadTestData(err);
+const char* loadTestData(UErrorCode* err){
+    if( _testDataPath == NULL){
+        const char*      directory=NULL;
+        UResourceBundle* test =NULL;
+        char* tdpath=NULL;
+        const char* tdrelativepath;
+#if defined (APPLE_XCODE_BUILD)
+        tdrelativepath = "";
+        directory = U_TOPBUILDDIR;
+#elif defined (U_TOPBUILDDIR)
+        tdrelativepath = "test"U_FILE_SEP_STRING"testdata"U_FILE_SEP_STRING"out"U_FILE_SEP_STRING;
+        directory = U_TOPBUILDDIR;
+#else
+        tdrelativepath = ".."U_FILE_SEP_STRING".."U_FILE_SEP_STRING"test"U_FILE_SEP_STRING"testdata"U_FILE_SEP_STRING"out"U_FILE_SEP_STRING;
+        directory= ctest_dataOutDir();
+#endif
+
+        tdpath = (char*) ctst_malloc(sizeof(char) *(( strlen(directory) + strlen(tdrelativepath)) + 10));
+
+
+        /* u_getDataDirectory shoul return \source\data ... set the
+         * directory to ..\source\data\..\test\testdata\out\testdata
+         *
+         * Fallback: When Memory mapped file is built
+         * ..\source\data\out\..\..\test\testdata\out\testdata
+         */
+        strcpy(tdpath, directory);
+        strcat(tdpath, tdrelativepath);
+        strcat(tdpath,"testdata");
+
+
+        test=ures_open(tdpath, "testtypes", err);
+
+        /* Fall back did not succeed either so return */
+        if(U_FAILURE(*err)){
+            *err = U_FILE_ACCESS_ERROR;
+            log_data_err("Could not load testtypes.res in testdata bundle with path %s - %s\n", tdpath, u_errorName(*err));
+            return "";
+        }
+        ures_close(test);
+        _testDataPath = tdpath;
+        return _testDataPath;
+    }
+    return _testDataPath;
 }
 
 /**
@@ -485,7 +663,7 @@ void *ctst_malloc(size_t size) {
   ctst_allocated_total++;
     if(ctst_allocated >= CTST_MAX_ALLOC - 1) {
         ctst_allocated = 0;
-        ctst_free = TRUE;
+        ctst_free = true;
     }
     if(ctst_allocated_stuff[ctst_allocated]) {
         free(ctst_allocated_stuff[ctst_allocated]);
@@ -496,7 +674,7 @@ void *ctst_malloc(size_t size) {
 #ifdef CTST_LEAK_CHECK
 static void ctst_freeAll() {
     int i;
-    if(ctst_free == FALSE) { /* only free up to the allocated mark */
+    if(ctst_free == false) { /* only free up to the allocated mark */
         for(i=0; i<ctst_allocated; i++) {
             free(ctst_allocated_stuff[i]);
             ctst_allocated_stuff[i] = NULL;
@@ -508,6 +686,7 @@ static void ctst_freeAll() {
         }
     }
     ctst_allocated = 0;
+    _testDataPath=NULL;
 }
 
 #define VERBOSE_ASSERTIONS
@@ -520,14 +699,14 @@ U_CFUNC UBool assertSuccessCheck(const char* msg, UErrorCode* ec, UBool possible
         } else {
             log_err_status(*ec, "FAIL: %s (%s)\n", msg, u_errorName(*ec));
         }
-        return FALSE;
+        return false;
     }
-    return TRUE;
+    return true;
 }
 
 U_CFUNC UBool assertSuccess(const char* msg, UErrorCode* ec) {
     U_ASSERT(ec!=NULL);
-    return assertSuccessCheck(msg, ec, FALSE);
+    return assertSuccessCheck(msg, ec, false);
 }
 
 /* if 'condition' is a UBool, the compiler complains bitterly about
@@ -555,14 +734,14 @@ U_CFUNC UBool assertEquals(const char* message, const char* expected,
     if (uprv_strcmp(expected, actual) != 0) {
         log_err("FAIL: %s; got \"%s\"; expected \"%s\"\n",
                 message, actual, expected);
-        return FALSE;
+        return false;
     }
 #ifdef VERBOSE_ASSERTIONS
     else {
         log_verbose("Ok: %s; got \"%s\"\n", message, actual);
     }
 #endif
-    return TRUE;
+    return true;
 }
 
 U_CFUNC UBool assertUEquals(const char* message, const UChar* expected,
@@ -577,7 +756,7 @@ U_CFUNC UBool assertUEquals(const char* message, const UChar* expected,
         if (expected[i] != actual[i]) {
             log_err("FAIL: %s; got \"%s\"; expected \"%s\"\n",
                     message, austrdup(actual), austrdup(expected));
-            return FALSE;
+            return false;
         }
         UChar curr = expected[i];
         U_ASSERT(curr == actual[i]);
@@ -588,48 +767,48 @@ U_CFUNC UBool assertUEquals(const char* message, const UChar* expected,
 #ifdef VERBOSE_ASSERTIONS
     log_verbose("Ok: %s; got \"%s\"\n", message, austrdup(actual));
 #endif
-    return TRUE;
+    return true;
 }
 
 U_CFUNC UBool assertIntEquals(const char* message, int64_t expected, int64_t actual) {
     if (expected != actual) {
         log_err("FAIL: %s; got \"%d\"; expected \"%d\"\n",
                 message, actual, expected);
-        return FALSE;
+        return false;
     }
 #ifdef VERBOSE_ASSERTIONS
     else {
         log_verbose("Ok: %s; got \"%d\"\n", message, actual);
     }
 #endif
-    return TRUE;
+    return true;
 }
 
 U_CFUNC UBool assertPtrEquals(const char* message, const void* expected, const void* actual) {
     if (expected != actual) {
         log_err("FAIL: %s; got 0x%llx; expected 0x%llx\n",
                 message, actual, expected);
-        return FALSE;
+        return false;
     }
 #ifdef VERBOSE_ASSERTIONS
     else {
         log_verbose("Ok: %s; got 0x%llx\n", message, actual);
     }
 #endif
-    return TRUE;
+    return true;
 }
 
 U_CFUNC UBool assertDoubleEquals(const char *message, double expected, double actual) {
     if (expected != actual) {
         log_err("FAIL: %s; got \"%f\"; expected \"%f\"\n", message, actual, expected);
-        return FALSE;
+        return false;
     }
 #ifdef VERBOSE_ASSERTIONS
     else {
         log_verbose("Ok: %s; got \"%f\"\n", message, actual);
     }
 #endif
-    return TRUE;
+    return true;
 }
 
 #endif

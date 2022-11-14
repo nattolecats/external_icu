@@ -1292,6 +1292,23 @@ public final class UCharacter implements ECharacterCategory, ECharacterDirection
         /** @stable ICU 70 */
         public static final int ZNAMENNY_MUSICAL_NOTATION_ID = 320; /*[1CF00]*/
 
+        // New blocks in Unicode 15.0
+
+        /** @stable ICU 72 */
+        public static final int ARABIC_EXTENDED_C_ID = 321; /*[10EC0]*/
+        /** @stable ICU 72 */
+        public static final int CJK_UNIFIED_IDEOGRAPHS_EXTENSION_H_ID = 322; /*[31350]*/
+        /** @stable ICU 72 */
+        public static final int CYRILLIC_EXTENDED_D_ID = 323; /*[1E030]*/
+        /** @stable ICU 72 */
+        public static final int DEVANAGARI_EXTENDED_A_ID = 324; /*[11B00]*/
+        /** @stable ICU 72 */
+        public static final int KAKTOVIK_NUMERALS_ID = 325; /*[1D2C0]*/
+        /** @stable ICU 72 */
+        public static final int KAWI_ID = 326; /*[11F00]*/
+        /** @stable ICU 72 */
+        public static final int NAG_MUNDARI_ID = 327; /*[1E4D0]*/
+
         /**
          * One more than the highest normal UnicodeBlock value.
          * The highest value is available via UCharacter.getIntPropertyMaxValue(UProperty.BLOCK).
@@ -1299,7 +1316,7 @@ public final class UCharacter implements ECharacterCategory, ECharacterDirection
          * @deprecated ICU 58 The numeric value may change over time, see ICU ticket #12420.
          */
         @Deprecated
-        public static final int COUNT = 321;
+        public static final int COUNT = 328;
 
         // blocks objects ---------------------------------------------------
 
@@ -2705,6 +2722,30 @@ public final class UCharacter implements ECharacterCategory, ECharacterDirection
         public static final UnicodeBlock ZNAMENNY_MUSICAL_NOTATION =
                 new UnicodeBlock("ZNAMENNY_MUSICAL_NOTATION",
                         ZNAMENNY_MUSICAL_NOTATION_ID); /*[1CF00]*/
+
+        // New blocks in Unicode 15.0
+
+        /** @stable ICU 72 */
+        public static final UnicodeBlock ARABIC_EXTENDED_C =
+                new UnicodeBlock("ARABIC_EXTENDED_C", ARABIC_EXTENDED_C_ID); /*[10EC0]*/
+        /** @stable ICU 72 */
+        public static final UnicodeBlock CJK_UNIFIED_IDEOGRAPHS_EXTENSION_H =
+                new UnicodeBlock("CJK_UNIFIED_IDEOGRAPHS_EXTENSION_H",
+                        CJK_UNIFIED_IDEOGRAPHS_EXTENSION_H_ID); /*[31350]*/
+        /** @stable ICU 72 */
+        public static final UnicodeBlock CYRILLIC_EXTENDED_D =
+                new UnicodeBlock("CYRILLIC_EXTENDED_D", CYRILLIC_EXTENDED_D_ID); /*[1E030]*/
+        /** @stable ICU 72 */
+        public static final UnicodeBlock DEVANAGARI_EXTENDED_A =
+                new UnicodeBlock("DEVANAGARI_EXTENDED_A", DEVANAGARI_EXTENDED_A_ID); /*[11B00]*/
+        /** @stable ICU 72 */
+        public static final UnicodeBlock KAKTOVIK_NUMERALS =
+                new UnicodeBlock("KAKTOVIK_NUMERALS", KAKTOVIK_NUMERALS_ID); /*[1D2C0]*/
+        /** @stable ICU 72 */
+        public static final UnicodeBlock KAWI = new UnicodeBlock("KAWI", KAWI_ID); /*[11F00]*/
+        /** @stable ICU 72 */
+        public static final UnicodeBlock NAG_MUNDARI =
+                new UnicodeBlock("NAG_MUNDARI", NAG_MUNDARI_ID); /*[1E4D0]*/
 
         /**
          * @stable ICU 2.4
@@ -5306,23 +5347,6 @@ public final class UCharacter implements ECharacterCategory, ECharacterDirection
         throw new IllegalArgumentException("Not a valid surrogate pair");
     }
 
-    // BEGIN Android patch: Keep the `char` version on Android. See ICU-21655
-    /**
-     * {@icu} Returns a code point corresponding to the two surrogate code units.
-     *
-     * @param lead the lead char
-     * @param trail the trail char
-     * @return code point if surrogate characters are valid.
-     * @exception IllegalArgumentException thrown when the code units do
-     *            not form a valid code point
-     * @stable ICU 2.1
-     */
-    public static int getCodePoint(char lead, char trail)
-    {
-        return getCodePoint((int) lead, (int) trail);
-    }
-    // END Android patch: Keep the `char` version on Android. See ICU-21655
-
     /**
      * {@icu} Returns the code point corresponding to the BMP code point.
      *
@@ -5956,7 +5980,7 @@ public final class UCharacter implements ECharacterCategory, ECharacterDirection
      *
      * @see com.ibm.icu.lang.UProperty
      * @see CharacterProperties#getBinaryPropertySet(int)
-     * @draft ICU 70
+     * @stable ICU 70
      */
     public static boolean hasBinaryProperty(CharSequence s, int property) {
         int length = s.length();
@@ -6271,19 +6295,6 @@ public final class UCharacter implements ECharacterCategory, ECharacterDirection
         return (codePoint & LEAD_SURROGATE_BITMASK) == LEAD_SURROGATE_BITS;
     }
 
-    // BEGIN Android patch: Keep the `char` version on Android. See ICU-21655
-    /**
-     * Same as {@link Character#isHighSurrogate},
-     *
-     * @param ch the char to check
-     * @return true if ch is a high (lead) surrogate
-     * @stable ICU 3.0
-     */
-    public static boolean isHighSurrogate(char ch) {
-        return isHighSurrogate((int) ch);
-    }
-    // END Android patch: Keep the `char` version on Android. See ICU-21655
-
     /**
      * Same as {@link Character#isLowSurrogate},
      * except that the ICU version accepts <code>int</code> for code points.
@@ -6296,19 +6307,6 @@ public final class UCharacter implements ECharacterCategory, ECharacterDirection
     public static boolean isLowSurrogate(int codePoint) {
         return (codePoint & TRAIL_SURROGATE_BITMASK) == TRAIL_SURROGATE_BITS;
     }
-
-    // BEGIN Android patch: Keep the `char` version on Android. See ICU-21655
-    /**
-     * Same as {@link Character#isLowSurrogate},
-     *
-     * @param ch the char to check
-     * @return true if ch is a low (trail) surrogate
-     * @stable ICU 3.0
-     */
-    public static boolean isLowSurrogate(char ch) {
-        return isLowSurrogate((int) ch);
-    }
-    // END Android patch: Keep the `char` version on Android. See ICU-21655
 
     /**
      * Same as {@link Character#isSurrogatePair},
@@ -6323,20 +6321,6 @@ public final class UCharacter implements ECharacterCategory, ECharacterDirection
     public static final boolean isSurrogatePair(int high, int low) {
         return isHighSurrogate(high) && isLowSurrogate(low);
     }
-
-    // BEGIN Android patch: Keep the `char` version on Android. See ICU-21655
-    /**
-     * Same as {@link Character#isSurrogatePair}.
-     *
-     * @param high the high (lead) char
-     * @param low the low (trail) char
-     * @return true if high, low form a surrogate pair
-     * @stable ICU 3.0
-     */
-    public static final boolean isSurrogatePair(char high, char low) {
-        return isSurrogatePair((int) high, (int) low);
-    }
-    // END Android patch: Keep the `char` version on Android. See ICU-21655
 
     /**
      * Same as {@link Character#charCount}.
@@ -6368,22 +6352,6 @@ public final class UCharacter implements ECharacterCategory, ECharacterDirection
         // see ICU4C U16_GET_SUPPLEMENTARY()
         return (high << 10) + low - U16_SURROGATE_OFFSET;
     }
-
-    // BEGIN Android patch: Keep the `char` version on Android. See ICU-21655
-    /**
-     * Same as {@link Character#toCodePoint}.
-     * Returns the code point represented by the two surrogate code units.
-     * This does not check the surrogate pair for validity.
-     *
-     * @param high the high (lead) surrogate
-     * @param low the low (trail) surrogate
-     * @return the code point formed by the surrogate pair
-     * @stable ICU 3.0
-     */
-    public static final int toCodePoint(char high, char low) {
-        return toCodePoint((int) high, (int) low);
-    }
-    // END Android patch: Keep the `char` version on Android. See ICU-21655
 
     /**
      * Same as {@link Character#codePointAt(CharSequence, int)}.

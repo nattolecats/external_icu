@@ -21,6 +21,8 @@
 
 #if !UCONFIG_NO_IDNA
 
+#include <stdbool.h>
+
 #include "unicode/ustring.h"
 #include "unicode/putil.h"
 #include "cintltst.h"
@@ -128,18 +130,18 @@ getValues(uint32_t result, int32_t* value, UBool* isIndex){
         type = USPREP_MAP;
         /* ascertain if the value is index or delta */
         if(result & 0x02){
-            *isIndex = TRUE;
+            *isIndex = true;
             *value = result  >> 2;
 
         }else{
-            *isIndex = FALSE;
+            *isIndex = false;
             *value = (int16_t)result;
             *value =  (*value >> 2);
 
         }
         if((result>>2) == _SPREP_MAX_INDEX_VALUE){
             type = USPREP_DELETE;
-            isIndex =FALSE;
+            isIndex =false;
             value = 0;
         }
     }
@@ -151,7 +153,7 @@ compareMapping(UStringPrepProfile* data, uint32_t codepoint, uint32_t* mapping,i
                UStringPrepType type){
     uint32_t result = 0;
     int32_t length=0;
-    UBool isIndex = FALSE;
+    UBool isIndex = false;
     UStringPrepType retType;
     int32_t value=0, idx=0, delta=0;
     int32_t* indexes = data->indexes;
@@ -233,7 +235,7 @@ compareFlagsForRange(UStringPrepProfile* data,
 
     uint32_t result =0 ;
     UStringPrepType retType;
-    UBool isIndex=FALSE;
+    UBool isIndex=false;
     int32_t value=0;
     UTrie trie = data->sprepTrie;
 /*
@@ -276,9 +278,18 @@ void
 doStringPrepTest(const char* binFileName, const char* txtFileName, int32_t options, UErrorCode* errorCode){
     (void)options; // suppress compiler warnings about unused variable
     const char *testdatapath = loadTestData(errorCode);
-    const char *srcdatapath = ctest_testDataDir();
+    const char *srcdatapath = NULL;
+    const char *relativepath = NULL;
     char *filename = NULL;
     UStringPrepProfile* profile = NULL;
+
+#ifdef U_TOPSRCDIR
+    srcdatapath = U_TOPSRCDIR;
+    relativepath = U_FILE_SEP_STRING"test"U_FILE_SEP_STRING"testdata"U_FILE_SEP_STRING;
+#else
+    srcdatapath = ctest_dataOutDir();
+    relativepath = ".."U_FILE_SEP_STRING".."U_FILE_SEP_STRING"test"U_FILE_SEP_STRING"testdata"U_FILE_SEP_STRING;
+#endif
 
     profile = usprep_open(testdatapath, binFileName, errorCode);
 
@@ -289,12 +300,13 @@ doStringPrepTest(const char* binFileName, const char* txtFileName, int32_t optio
         log_err("Failed to load %s data file. Error: %s \n", binFileName, u_errorName(*errorCode));
         return;
     }
-    filename = (char*)malloc(strlen(srcdatapath) + strlen(txtFileName) + 1);
+    filename = (char*) malloc(strlen(srcdatapath)+strlen(relativepath)+strlen(txtFileName)+10 );
     /* open and load the txt file */
     strcpy(filename,srcdatapath);
+    strcat(filename,relativepath);
     strcat(filename,txtFileName);
 
-    parseMappings(filename,profile, TRUE,errorCode);
+    parseMappings(filename,profile, true,errorCode);
 
     free(filename);
 }

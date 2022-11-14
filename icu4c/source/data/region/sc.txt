@@ -111,7 +111,7 @@ sc{
         EZ{"Eurozona"}
         FI{"Finlàndia"}
         FJ{"Fiji"}
-        FK{"Ìsulas Falkland (Ìsulas Malvinas)"}
+        FK{"Ìsulas Falkland"}
         FM{"Micronèsia"}
         FO{"Ìsulas Føroyar"}
         FR{"Frantza"}
@@ -134,7 +134,7 @@ sc{
         GU{"Guàm"}
         GW{"Guinea-Bissau"}
         GY{"Guyana"}
-        HK{"Hong Kong"}
+        HK{"RAS tzinesa de Hong Kong"}
         HM{"Ìsulas Heard e McDonald"}
         HN{"Honduras"}
         HR{"Croàtzia"}
@@ -188,7 +188,7 @@ sc{
         ML{"Mali"}
         MM{"Myanmàr (Birmània)"}
         MN{"Mongòlia"}
-        MO{"Macao"}
+        MO{"RAS tzinesa de Macao"}
         MP{"Ìsulas Mariannas setentrionales"}
         MQ{"Martinica"}
         MR{"Mauritània"}
@@ -223,7 +223,7 @@ sc{
         PM{"Santu Predu e Miquelon"}
         PN{"Ìsulas Pìtcairn"}
         PR{"Puerto Rico"}
-        PS{"Palestina"}
+        PS{"Territòrios palestinesos"}
         PT{"Portogallu"}
         PW{"Palau"}
         PY{"Paraguày"}
@@ -300,6 +300,9 @@ sc{
     }
     Countries%short{
         GB{"RU"}
+        HK{"Hong Kong"}
+        MO{"Macao"}
+        PS{"Palestina"}
         US{"IUA"}
     }
     Countries%variant{
@@ -307,6 +310,8 @@ sc{
         CG{"Congo (Repùblica)"}
         CI{"Côte d’Ivoire"}
         CZ{"Repùblica Tzeca"}
+        FK{"Ìsulas Falkland (Ìsulas Malvinas)"}
+        NZ{"Aotearoa Zelanda Noa"}
         SZ{"Swàziland"}
         TL{"Timor Orientale"}
     }
