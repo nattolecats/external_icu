@@ -311,6 +311,7 @@ en_XA{
         CI{"[Îṽöŕý Çöåšţ one two]"}
         CV{"[Çåƀö Ṽéŕðé one two]"}
         CZ{"[Çžéçĥ Ŕéþûƀļîç one two]"}
+        NZ{"[Åöţéåŕöå Ñéŵ Žéåļåñð one two three]"}
         SZ{"[Šŵåžîļåñð one two]"}
         TL{"[Éåšţ Ţîɱöŕ one two]"}
         TR{"[Ţûŕķéý one]"}
