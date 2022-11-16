@@ -74,7 +74,7 @@ Ethi-Latn/ES3842
 Ethi-Latn/IES_JES_1964
 Ethi-Latn/Lambdin
 Ethi-Latn/SERA
-Ethi-Sarb
+Ethi-Latn/Williamson
 Ethi-sgw_Ethi/Gurage_2013
 Ethiopic-Braille/Amharic
 Ethiopic-Cyrillic/Gutgarts
@@ -88,9 +88,11 @@ Ethiopic-Latin/IES_JES_1964
 Ethiopic-Latin/Lambdin
 Ethiopic-Latin/SERA
 Ethiopic-Latin/Tekie_Alibekit
+Ethiopic-Latin/Williamson
 Ethiopic-Latin/Xaleget
-Ethiopic-Musnad
 Fullwidth-Halfwidth
+Geez-Ethiopic
+Geez-Musnad
 Geor-Latn
 Georgian-Latin
 Georgian-Latin/BGN
@@ -205,6 +207,7 @@ Latin-Ethiopic/IES_JES_1964
 Latin-Ethiopic/Lambdin
 Latin-Ethiopic/SERA
 Latin-Ethiopic/Tekie_Alibekit
+Latin-Ethiopic/Williamson
 Latin-Georgian
 Latin-Greek
 Latin-Greek/UNGEGN
@@ -239,6 +242,7 @@ Latn-Ethi/Beta_Metsehaf
 Latn-Ethi/IES_JES_1964
 Latn-Ethi/Lambdin
 Latn-Ethi/SERA
+Latn-Ethi/Williamson
 Latn-Geor
 Latn-Grek
 Latn-Grek/UNGEGN
@@ -281,7 +285,6 @@ Mlym-Taml
 Mlym-Telu
 Mlym-ur
 Mongolian-Latin/BGN
-Musnad-Ethiopic
 Myanmar-Latin
 NumericPinyin-Latin
 NumericPinyin-Pinyin
@@ -311,7 +314,7 @@ Persian-Latin/BGN
 Pinyin-NumericPinyin
 Publishing-Any
 Russian-Latin/BGN
-Sarb-Ethi
+Sarb-gz_Ethi
 Serbian-Latin/BGN
 Simplified-Traditional
 Syrc-Latn
@@ -437,6 +440,7 @@ es_FONIPA-ja
 es_FONIPA-zh
 fa-fa_FONIPA
 fa-fa_Latn/BGN
+gz_Ethi-Sarb
 ha-ha_NE
 he-he_Latn/BGN
 hy-am
@@ -662,6 +666,7 @@ Any-Ethiopic/IES_JES_1964
 Any-Ethiopic/Lambdin
 Any-Ethiopic/SERA
 Any-Ethiopic/Tekie_Alibekit
+Any-Ethiopic/Williamson
 Any-Oriya
 Any-byn_Latn/Tekie_Alibekit
 Any-byn_Latn/Xaleget
@@ -680,6 +685,7 @@ Any-Latin/IES_JES_1964
 Any-Latin/Lambdin
 Any-Latin/SERA
 Any-Latin/Tekie_Alibekit
+Any-Latin/Williamson
 Any-Latin/Xaleget
 Any-Braille/Amharic
 Any-Cyrillic/Gutgarts
@@ -717,6 +723,7 @@ Any-cy_FONIPA
 Any-sat_FONIPA
 Any-am_Brai
 Any-und_FONIPA
+Any-Sarb
 Any-dv_Latn/BGN
 Any-ug_FONIPA
 Any-Latin/Names
@@ -733,6 +740,7 @@ Any-Ethi/Beta_Metsehaf
 Any-Ethi/IES_JES_1964
 Any-Ethi/Lambdin
 Any-Ethi/SERA
+Any-Ethi/Williamson
 Any-Grek
 Any-Grek/UNGEGN
 Any-Syrc
@@ -760,12 +768,12 @@ Any-fa_FONIPA
 Any-fa_Latn/BGN
 Any-ja_Latn/BGN
 Any-nv_FONIPA
+Any-gz_Ethi
 Any-byn_Ethi/Tekie_Alibekit
 Any-hy_AREVMDA_FONIPA
 Any-uz_Cyrl
 Any-ru
 Any-sgw_Ethi/Gurage_2013
-Any-Sarb
 Any-Latn/ALALOC
 Any-Latn/Aethiopi
 Any-Latn/Beta_Metsehaf
@@ -773,6 +781,7 @@ Any-Latn/ES3842
 Any-Latn/IES_JES_1964
 Any-Latn/Lambdin
 Any-Latn/SERA
+Any-Latn/Williamson
 Any-Cyrl/Gutgarts
 Any-Latin/UNGEGN
 Any-Latn/UNGEGN
