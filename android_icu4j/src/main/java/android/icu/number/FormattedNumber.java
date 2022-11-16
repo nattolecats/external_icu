@@ -11,11 +11,10 @@ import android.icu.impl.FormattedValueStringBuilderImpl;
 import android.icu.impl.Utility;
 import android.icu.impl.number.DecimalQuantity;
 import android.icu.text.ConstrainedFieldPosition;
+import android.icu.text.DisplayOptions;
 import android.icu.text.FormattedValue;
 import android.icu.text.PluralRules.IFixedDecimal;
 import android.icu.util.MeasureUnit;
-import android.icu.util.NounClass;
-import android.icu.util.UResourceTypeMismatchException;
 
 /**
  * The result of a number formatting operation. This class allows the result to be exported in several
@@ -123,55 +122,20 @@ public class FormattedNumber implements FormattedValue {
     }
 
     /**
-     * Gets the noun class of the formatted output. Returns `OTHER` when the noun class
-     * is not supported yet.
+     * Gets the noun class of the formatted output. Returns `UNDEFINED` when the noun class is not
+     * supported yet.
      *
-     * @throws UResourceTypeMismatchException
-     * @return `NounClass`
+     * @return NounClass
      * @hide draft / provisional / internal are hidden on Android
      */
-    public NounClass getNounClass() {
-        // if it is not exist, return `OTHER`
-        if (this.gender == null || this.gender.isEmpty()) {
-            return NounClass.OTHER;
-        }
-
-        if (this.gender.equals("neuter")) {
-            return NounClass.NEUTER;
-        }
-
-        if (this.gender.equals("feminine")) {
-            return NounClass.FEMININE;
-        }
-
-        if (this.gender.equals("masculine")) {
-            return NounClass.MASCULINE;
-        }
-
-        if (this.gender.equals("animate")) {
-            return NounClass.ANIMATE;
-        }
-
-        if (this.gender.equals("inanimate")) {
-            return NounClass.INANIMATE;
-        }
-
-        if (this.gender.equals("personal")) {
-            return NounClass.PERSONAL;
-        }
-
-        if (this.gender.equals("common")) {
-            return NounClass.COMMON;
-        }
-
-        // In case there is no matching.
-        throw new UResourceTypeMismatchException("there are noun classes that are not supported yet");
+    public DisplayOptions.NounClass getNounClass() {
+        return DisplayOptions.NounClass.fromIdentifier(this.gender);
     }
 
     /**
      * The gender of the formatted output.
      *
-     * @deprecated This API is for ICU internal use only.
+     * @deprecated This API is for technology preview only.
      * @hide draft / provisional / internal are hidden on Android
      */
     @Deprecated

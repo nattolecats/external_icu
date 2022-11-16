@@ -28,6 +28,7 @@ en_XA{
         lw{"[Ļîñé Ɓŕéåķš Îñ Ŵöŕðš Šéţţîñĝ one two three four]"}
         m0{"[Ţŕåñšƒöŕɱ Ŕûļéš one two three]"}
         ms{"[Ṁéåšûŕéɱéñţ Šýšţéɱ one two three]"}
+        mu{"[Ṁéåšûŕéɱéñţ Ûñîţ one two three]"}
         numbers{"[Ñûɱƀéŕš one two]"}
         rg{"[Ŕéĝîöñ Ƒöŕ Šûþþļéɱéñţåļ Ðåţå one two three four]"}
         s0{"[Ţŕåñšƒöŕɱ Šöûŕçé one two three]"}
@@ -62,6 +63,7 @@ en_XA{
         am{"[Åɱĥåŕîç one two]"}
         an{"[Åŕåĝöñéšé one two]"}
         ang{"[Öļð Éñĝļîšĥ one two]"}
+        ann{"[Öƀöļö one]"}
         anp{"[Åñĝîķå one]"}
         ar{"[Åŕåƀîç one]"}
         ar_001{"[Ṁöðéŕñ Šţåñðåŕð Åŕåƀîç one two three]"}
@@ -100,6 +102,7 @@ en_XA{
         bfd{"[Ɓåƒûţ one]"}
         bfq{"[Ɓåðåĝå one]"}
         bg{"[Ɓûļĝåŕîåñ one two]"}
+        bgc{"[Ĥåŕýåñṽî one two]"}
         bgn{"[Ŵéšţéŕñ Ɓåļöçĥî one two three]"}
         bho{"[Ɓĥöĵþûŕî one two]"}
         bi{"[Ɓîšļåɱå one two]"}
@@ -107,7 +110,7 @@ en_XA{
         bin{"[Ɓîñî one]"}
         bjn{"[Ɓåñĵåŕ one]"}
         bkm{"[Ķöɱ one]"}
-        bla{"[Šîķšîķå one two]"}
+        bla{"[Šîķšîķá one two]"}
         blt{"[Ţåî Ðåɱ one two]"}
         bm{"[Ɓåɱƀåŕå one two]"}
         bn{"[Ɓåñĝļå one]"}
@@ -216,7 +219,7 @@ en_XA{
         fa_AF{"[Ðåŕî one]"}
         fan{"[Ƒåñĝ one]"}
         fat{"[Ƒåñţî one]"}
-        ff{"[Ƒûļåĥ one]"}
+        ff{"[Ƒûļå one]"}
         fi{"[Ƒîññîšĥ one two]"}
         fil{"[Ƒîļîþîñö one two]"}
         fit{"[Ţöŕñéðåļéñ Ƒîññîšĥ one two three]"}
@@ -366,7 +369,7 @@ en_XA{
         la{"[Ļåţîñ one]"}
         lad{"[Ļåðîñö one]"}
         lag{"[Ļåñĝî one]"}
-        lah{"[Ļåĥñðå one]"}
+        lah{"[Ŵéšţéŕñ Þåñĵåƀî one two three]"}
         lam{"[Ļåɱƀå one]"}
         lb{"[Ļûẋéɱƀöûŕĝîšĥ one two]"}
         lez{"[Ļéžĝĥîåñ one two]"}
@@ -384,6 +387,7 @@ en_XA{
         lou{"[Ļöûîšîåñå Çŕéöļé one two three]"}
         loz{"[Ļöžî one]"}
         lrc{"[Ñöŕţĥéŕñ Ļûŕî one two]"}
+        lsm{"[Šååɱîå one]"}
         lt{"[Ļîţĥûåñîåñ one two]"}
         ltg{"[Ļåţĝåļîåñ one two]"}
         lu{"[Ļûƀå‐Ķåţåñĝå one two]"}
@@ -500,11 +504,12 @@ en_XA{
         pfl{"[Þåļåţîñé Ĝéŕɱåñ one two three]"}
         phn{"[Þĥöéñîçîåñ one two]"}
         pi{"[Þåļî one]"}
+        pis{"[Þîĵîñ one]"}
         pl{"[Þöļîšĥ one]"}
         pms{"[Þîéðɱöñţéšé one two]"}
         pnt{"[Þöñţîç one]"}
         pon{"[Þöĥñþéîåñ one two]"}
-        pqm{"[Ṁåļéçîţé one two]"}
+        pqm{"[Ṁåļîšééţ‐Þåššåɱåǫûöððý one two three]"}
         prg{"[Þŕûššîåñ one two]"}
         pro{"[Öļð Þŕöṽéñçåļ one two]"}
         ps{"[Þåšĥţö one]"}
@@ -535,7 +540,7 @@ en_XA{
         rwk{"[Ŕŵå one]"}
         sa{"[Šåñšķŕîţ one two]"}
         sad{"[Šåñðåŵé one two]"}
-        sah{"[Šåķĥå one]"}
+        sah{"[Ýåķûţ one]"}
         sam{"[Šåɱåŕîţåñ Åŕåɱåîç one two three]"}
         saq{"[Šåɱƀûŕû one two]"}
         sas{"[Šåšåķ one]"}
@@ -625,6 +630,7 @@ en_XA{
         tn{"[Ţšŵåñå one]"}
         to{"[Ţöñĝåñ one]"}
         tog{"[Ñýåšå Ţöñĝå one two]"}
+        tok{"[Ţöķî Þöñå one two]"}
         tpi{"[Ţöķ Þîšîñ one two]"}
         tr{"[Ţûŕķîšĥ one two]"}
         tru{"[Ţûŕöýö one]"}
@@ -719,6 +725,7 @@ en_XA{
     }
     Languages%variant{
         ckb{"[Ķûŕðîšĥ، Šöŕåñî one two three]"}
+        hi_Latn{"[Ĥîñĝļîšĥ one two]"}
         ky{"[Ķîŕĝĥîž one two]"}
         my{"[Ṁýåñɱåŕ Ļåñĝûåĝé one two three]"}
         ps{"[Þûšĥţö one]"}
@@ -1207,6 +1214,11 @@ en_XA{
             uksystem{"[Îɱþéŕîåļ Ṁéåšûŕéɱéñţ Šýšţéɱ one two three four]"}
             ussystem{"[ÛŠ Ṁéåšûŕéɱéñţ Šýšţéɱ one two three]"}
         }
+        mu{
+            celsius{"[Çéļšîûš one two]"}
+            fahrenhe{"[Ƒåĥŕéñĥéîţ one two]"}
+            kelvin{"[Ķéļṽîñ one]"}
+        }
         numbers{
             adlm{"[Åðļåɱ Ðîĝîţš one two]"}
             ahom{"[Åĥöɱ Ðîĝîţš one two]"}
@@ -1247,6 +1259,7 @@ en_XA{
             jpanfin{"[Ĵåþåñéšé Ƒîñåñçîåļ Ñûɱéŕåļš one two three four]"}
             jpanyear{"[Ĵåþåñéšé Çåļéñðåŕ Ĝåññéñ Ýéåŕ Ñûɱéŕåļš one two three four five]"}
             kali{"[Ķåýåĥ Ļî Ðîĝîţš one two three]"}
+            kawi{"[Ķåŵî Ðîĝîţš one two]"}
             khmr{"[Ķĥɱéŕ Ðîĝîţš one two]"}
             knda{"[Ķåññåðå Ðîĝîţš one two]"}
             lana{"[Ţåî Ţĥåɱ Ĥöŕå Ðîĝîţš one two three]"}
@@ -1268,6 +1281,7 @@ en_XA{
             mymr{"[Ṁýåñɱåŕ Ðîĝîţš one two]"}
             mymrshan{"[Ṁýåñɱåŕ Šĥåñ Ðîĝîţš one two three]"}
             mymrtlng{"[Ṁýåñɱåŕ Ţåî Ļåîñĝ Ðîĝîţš one two three]"}
+            nagm{"[Ñåĝ Ṁûñðåŕî Ðîĝîţš one two three]"}
             native{"[Ñåţîṽé Ðîĝîţš one two]"}
             newa{"[Ñéŵå Ðîĝîţš one two]"}
             nkoo{"[Ñ’Ķö Ðîĝîţš one two]"}

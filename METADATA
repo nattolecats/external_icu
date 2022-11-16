@@ -11,7 +11,7 @@ third_party {
     type: GIT
     value: "https://github.com/unicode-org/icu"
   }
-  version: "71"
-  last_upgrade_date { year: 2022 month: 6 day: 16 }
+  version: "72"
+  last_upgrade_date { year: 2022 month: 11 day: 1 }
   license_type: RECIPROCAL
 }
