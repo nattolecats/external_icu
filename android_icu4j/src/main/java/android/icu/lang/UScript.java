@@ -875,9 +875,9 @@ public final class UScript {
     /***/
     public static final int VITHKUQI = 197; /* Vith */
 
-    /** @hide Hide new API in Android temporarily*/
+    /***/
     public static final int KAWI = 198; /* Kawi */
-    /** @hide Hide new API in Android temporarily*/
+    /***/
     public static final int NAG_MUNDARI = 199; /* Nagm */
 
     /**

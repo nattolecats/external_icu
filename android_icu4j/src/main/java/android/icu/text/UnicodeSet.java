@@ -875,7 +875,6 @@ public class UnicodeSet extends UnicodeFilter implements Iterable<String>, Compa
 
     /**
      * @return true if this set contains multi-character strings or the empty string.
-     * @hide Hide new API in Android temporarily
      */
     public boolean hasStrings() {
         return !strings.isEmpty();
