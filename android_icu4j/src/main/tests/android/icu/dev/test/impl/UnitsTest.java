@@ -27,8 +27,8 @@ import android.icu.impl.units.UnitsData;
 import android.icu.impl.units.UnitsRouter;
 import android.icu.util.Measure;
 import android.icu.util.MeasureUnit;
+import android.icu.util.ULocale;
 import android.icu.testsharding.MainTestShard;
-
 
 @MainTestShard
 public class UnitsTest {
@@ -137,25 +137,27 @@ public class UnitsTest {
             //                             new Measure(0, MeasureUnit.METER)},
             //              0),
 
-            // 1e-15 light years is 9.46073 meters (calculated using "bc" and
-            // the CLDR conversion factor). With double-precision maths in C++,
+            // 1e-15 light years is 9.4607304725808 (calculated using "bc" and
+            // the CLDR conversion factor)¹. With double-precision maths in C++,
             // we get 10.5. In this case, we're off by a bit more than 1 meter.
             // With Java BigDecimal, we get accurate results.
+            // ¹With CLDR 42 conversions we get a more accurate and precise value for meters.
             new TestCase("light-year", "light-year-and-meter", BigDecimal.valueOf(1.0 + 1e-15),
                          new Measure[] {new Measure(1, MeasureUnit.LIGHT_YEAR),
-                                        new Measure(9.46073, MeasureUnit.METER)},
+                                        new Measure(9.4607304725808, MeasureUnit.METER)},
                          0 /* meters, precision */),
 
             // TODO(ICU-21861): reconsider whether epsilon rounding is desirable:
             //
-            // 2e-16 light years is 1.892146 meters. For C++ double, we consider
+            // 2e-16 light years is 1.89214609451616 meters¹. For C++ double, we consider
             // this in the noise, and thus expect a 0. (This test fails when
             // 2e-16 is increased to 4e-16.) For Java, using BigDecimal, we
             // actually get a good result.
+            // ¹With CLDR 42 conversions we get a more accurate and precise value for meters.
             new TestCase("light-year", "light-year-and-meter", BigDecimal.valueOf(1.0 + 2e-16),
                          new Measure[] {new Measure(1, MeasureUnit.LIGHT_YEAR),
-                                        new Measure(1.892146, MeasureUnit.METER)},
-                         0),
+                                        new Measure(1.89214609451616, MeasureUnit.METER)},
+                         0 /* meters, precision */),
 
             // Negative numbers
             new TestCase(
@@ -475,10 +477,10 @@ public class UnitsTest {
                 new TestData("cubic-meter-per-meter", "mile-per-gallon", 2.1383143939394E-6, 1.1),
                 new TestData("cubic-meter-per-meter", "mile-per-gallon", 2.6134953703704E-6, 0.9),
                 new TestData("liter-per-100-kilometer", "mile-per-gallon", 6.6, 35.6386),
-                // // TODO(ICU-21862): we should probably return something other than "0":
+                // // TODO(ICU-21988): we should probably return something other than "0":
                 // new TestData("liter-per-100-kilometer", "mile-per-gallon", 0, 0),
                 // new TestData("mile-per-gallon", "liter-per-100-kilometer", 0, 0),
-                // // TODO(ICU-21862): deal with infinity input in Java?
+                // // TODO(ICU-21988): deal with infinity input in Java?
                 // new TestData("mile-per-gallon", "liter-per-100-kilometer", INFINITY, 0),
                 // We skip testing -Inf, because the inverse conversion loses the sign:
                 // new TestData("mile-per-gallon", "liter-per-100-kilometer", -INFINITY, 0),
@@ -614,6 +616,7 @@ public class UnitsTest {
              */
             String category;
             String usage;
+            ULocale locale;
             String region;
             Pair<String, MeasureUnitImpl> inputUnit;
             BigDecimal input;
@@ -652,6 +655,7 @@ public class UnitsTest {
                 this.category = category;
                 this.usage = usage;
                 this.region = region;
+                this.locale = new ULocale("und-" + this.region);
                 this.inputUnit = Pair.of(inputUnitString, MeasureUnitImpl.UnitsParser.parseForIdentifier(inputUnitString));
                 this.input = new BigDecimal(inputValue);
                 for (Pair<String, String> output :
@@ -668,8 +672,8 @@ public class UnitsTest {
                     outputUnits.add(unit.second);
                 }
                 return "TestCase: " + category + ", " + usage + ", " + region + "; Input: " + input +
-                    " " + inputUnit.first + "; Expected Values: " + expectedInOrder +
-                    ", Expected Units: " + outputUnits;
+                        " " + inputUnit.first + "; Expected Values: " + expectedInOrder +
+                        ", Expected Units: " + outputUnits;
             }
         }
 
@@ -687,7 +691,8 @@ public class UnitsTest {
         }
 
         for (TestCase testCase : tests) {
-            UnitsRouter router = new UnitsRouter(testCase.inputUnit.second, testCase.region, testCase.usage);
+            UnitsRouter router = new UnitsRouter(testCase.inputUnit.second, testCase.locale,
+                    testCase.usage);
             List<Measure> measures = router.route(testCase.input, null).complexConverterResult.measures;
 
             assertEquals("For " + testCase.toString() + ", Measures size must be the same as expected units",
@@ -708,7 +713,7 @@ public class UnitsTest {
 
         // Test UnitsRouter created with CLDR units identifiers.
         for (TestCase testCase : tests) {
-            UnitsRouter router = new UnitsRouter(testCase.inputUnit.first, testCase.region, testCase.usage);
+            UnitsRouter router = new UnitsRouter(testCase.inputUnit.first, testCase.locale, testCase.usage);
             List<Measure> measures = router.route(testCase.input, null).complexConverterResult.measures;
 
             assertEquals("Measures size must be the same as expected units",
@@ -786,7 +791,9 @@ public class UnitsTest {
 
         UnitsData data = new UnitsData();
         for (TestCase t : testCases) {
-            UnitPreferences.UnitPreference prefs[] = data.getPreferencesFor(t.category, t.usage, t.region);
+            ULocale locale = new ULocale("und-" + t.region);
+            UnitPreferences.UnitPreference prefs[] = data.getPreferencesFor(t.category, t.usage,
+                    locale);
             if (prefs.length > 0) {
                 assertEquals(t.name + " - max unit", t.expectedBiggest, prefs[0].getUnit());
                 assertEquals(t.name + " - min unit", t.expectedSmallest, prefs[prefs.length - 1].getUnit());
