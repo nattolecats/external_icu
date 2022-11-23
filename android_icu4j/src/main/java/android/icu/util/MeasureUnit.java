@@ -889,7 +889,6 @@ public class MeasureUnit implements Serializable {
 
     /**
      * Constant for unit of concentr: item
-     * @hide Hide new API in Android temporarily
      */
     public static final MeasureUnit ITEM = MeasureUnit.internalGetInstance("concentr", "item");
 
@@ -1175,7 +1174,6 @@ public class MeasureUnit implements Serializable {
 
     /**
      * Constant for unit of force: kilowatt-hour-per-100-kilometer
-     * @hide Hide new API in Android temporarily
      */
     public static final MeasureUnit KILOWATT_HOUR_PER_100_KILOMETER = MeasureUnit.internalGetInstance("force", "kilowatt-hour-per-100-kilometer");
 
