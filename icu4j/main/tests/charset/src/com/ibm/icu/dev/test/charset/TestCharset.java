@@ -28,7 +28,6 @@ import java.util.MissingResourceException;
 import java.util.Set;
 import java.util.SortedMap;
 
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
@@ -766,7 +765,6 @@ public class TestCharset extends TestFmwk {
         }
     }
 
-    @Ignore("Failure on host to investigate b/259742623")
     @Test
     public void TestSurrogateBehavior() {
         CharsetProviderICU icu = new CharsetProviderICU();
