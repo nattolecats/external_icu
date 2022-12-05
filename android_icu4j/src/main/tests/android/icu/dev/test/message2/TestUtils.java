@@ -11,9 +11,7 @@ import org.junit.Ignore;
 
 import android.icu.message2.MessageFormatter;
 import android.icu.message2.Mf2FunctionRegistry;
-import android.icu.testsharding.MainTestShard;
 
-@MainTestShard
 @Ignore("Utility class, has no test methods.")
 /** Utility class, has no test methods. */
 public class TestUtils {
