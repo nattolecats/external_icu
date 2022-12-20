@@ -60,6 +60,7 @@ LIBANDROIDICU_EXTERNAL_1 {
     u_toupper_android; # apex
     ubidi_close_android; # apex
     ubidi_countRuns_android; # apex
+    ubidi_getDirection_android; # apex
     ubidi_getLength_android; # apex
     ubidi_getLevelAt_android; # apex
     ubidi_getParaLevel_android; # apex
@@ -69,6 +70,7 @@ LIBANDROIDICU_EXTERNAL_1 {
     ubidi_reorderVisual_android; # apex
     ubidi_setClassCallback_android; # apex
     ubidi_setPara_android; # apex
+    ubrk_clone_android; # apex
     ubrk_close_android; # apex
     ubrk_current_android; # apex
     ubrk_first_android; # apex
@@ -78,6 +80,7 @@ LIBANDROIDICU_EXTERNAL_1 {
     ubrk_next_android; # apex
     ubrk_open_android; # apex
     ubrk_preceding_android; # apex
+    ubrk_setText_android; # apex
     ubrk_setUText_android; # apex
     ucnv_close_android; # apex
     ucnv_convert_android; # apex
