@@ -38,6 +38,7 @@ cc_defaults {
         "-Wno-unused-function",
         "-Wno-unused-parameter",
         "-Wno-unused-variable",
+        "-DUCONFIG_USE_ML_PHRASE_BREAKING=1",
     ],
     c_std: "c11",
     cpp_std: "c++11",
