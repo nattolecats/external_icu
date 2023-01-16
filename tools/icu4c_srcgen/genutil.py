@@ -89,7 +89,7 @@ def get_clang_path():
 def get_clang_lib_path(clang_path):
     """Return the libclang.so path"""
     base_path = os.path.join(clang_path, 'lib64')
-    files = [f for f in os.listdir(base_path) if f.startswith('libclang.so.')]
+    files = [f for f in os.listdir(base_path) if f.startswith('libclang.so')]
     return os.path.join(base_path, files[0])
 
 
