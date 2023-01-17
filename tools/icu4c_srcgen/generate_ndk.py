@@ -220,6 +220,7 @@ IGNORED_INCLUDE_DEPENDENCY = {
 }
 
 IGNORED_HEADER_FOR_DOXYGEN_GROUPING = set([
+    "ubidi.h", # ubidi.h has the @{ ... @} group block already.
     "uconfig.h", # pre-defined config that NDK users shouldn't change
     "platform.h", # pre-defined variable not to be changed by the NDK users
     "utf_old.h", # deprecated UTF macros
