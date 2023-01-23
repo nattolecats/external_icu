@@ -28,7 +28,7 @@
 
 #include "unicode/utypes.h"
  /**
-  * @addtogroup ICU4C
+  * @addtogroup icu4c ICU4C
   * @{
   * \file
   * \brief C API: Platform Utilities
