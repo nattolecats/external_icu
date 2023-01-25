@@ -45,7 +45,7 @@
 #endif
 
 /*!
- * @addtogroup ICU4C
+ * @addtogroup icu4c ICU4C
  * @{
  * \file
  * \brief Basic definitions for ICU, for both C and C++ APIs

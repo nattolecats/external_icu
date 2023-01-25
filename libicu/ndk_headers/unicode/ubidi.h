@@ -291,7 +291,7 @@
  */
 
 /*DOCXX_TAG*/
-/*@addtogroup ICU4C*/
+/*@addtogroup icu4c ICU4C*/
 /*@{*/
 
 /**

@@ -12,7 +12,7 @@
 U_CDECL_BEGIN
 
 /**
- * @addtogroup ICU4C
+ * @addtogroup icu4c ICU4C
  * @{
  * \file
  * \brief C API: This file defines an abstract map from Unicode code points to integer values.
