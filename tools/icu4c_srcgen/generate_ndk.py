@@ -261,7 +261,7 @@ def add_ndk_required_doxygen_grouping():
 
         cmd_add_addtogroup_annotation = ['sed',
                '-i',
-               '0,/^\( *\)\(\* *\\\\file\)/s//\\1* @addtogroup ICU4C\\n\\1* @{\\n\\1\\2/',
+               '0,/^\( *\)\(\* *\\\\file\)/s//\\1* @addtogroup icu4c ICU4C\\n\\1* @{\\n\\1\\2/',
                src_path
                ]
 

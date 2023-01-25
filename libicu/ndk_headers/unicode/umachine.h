@@ -27,7 +27,7 @@
 
 
 /**
- * @addtogroup ICU4C
+ * @addtogroup icu4c ICU4C
  * @{
  * \file
  * \brief Basic types and constants for UTF
