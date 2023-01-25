@@ -27,7 +27,7 @@
 #include "unicode/uenum.h"
 
 /**
- * @addtogroup ICU4C
+ * @addtogroup icu4c ICU4C
  * @{
  * \file
  * \brief C API: Locale ID functionality similar to C++ class Locale
