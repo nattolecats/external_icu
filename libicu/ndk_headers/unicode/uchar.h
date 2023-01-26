@@ -63,7 +63,7 @@ U_CDECL_BEGIN
 #define U_UNICODE_VERSION "15.0"
 
 /**
- * @addtogroup ICU4C
+ * @addtogroup icu4c ICU4C
  * @{
  * \file
  * \brief C API: Unicode Properties
