@@ -91,24 +91,16 @@ cc_library_shared {
     },
     visibility: [
         "//build/orchestrator/apis",
-        "//cts/hostsidetests/securitybulletin/securityPatch/CVE-2019-1988",
         "//external/icu:__subpackages__",
+        "//packages/modules/RuntimeI18n:__subpackages__",
+        // The following dependencies can't use libicu instead, because it depends on UConverter
+        // or URegularExpression or statically linking libsqlite / libxml2.
         "//external/libxml2",
-        "//external/skia",
         "//external/robolectric/nativeruntime/external/sqlite/android",
         "//external/sqlite:__subpackages__",
         "//external/sfntly",
-        "//frameworks/av/drm/libdrmframework/plugins/forward-lock/FwdLockEngine",
         "//frameworks/av/media/libmedia",
-        "//frameworks/base/core/jni",
-        "//frameworks/base/libs/hwui",
-        "//frameworks/minikin:__subpackages__",
-        "//hardware/interfaces/graphics/allocator/aidl/vts",
-        "//packages/modules/RuntimeI18n:__subpackages__",
-        // TODO: Mainline StatsD shouldn't have the dependency on this module. See b/263852499.
-        "//packages/modules/StatsD/statsd",
         "//packages/apps/Nfc/nci/jni",
-        "//tools/security/fuzzing/orphans/libskia",
         // TODO: Remove dependency from /vendor
         "//vendor:__subpackages__",
     ],
