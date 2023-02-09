@@ -101,8 +101,6 @@ cc_library_shared {
         "//external/sfntly",
         "//frameworks/av/media/libmedia",
         "//packages/apps/Nfc/nci/jni",
-        // TODO: Remove dependency from /vendor
-        "//vendor:__subpackages__",
     ],
 }
 
