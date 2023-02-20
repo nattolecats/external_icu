@@ -89,6 +89,7 @@ cc_library_shared {
             enabled: true,
         },
     },
+    // Only add a new path below if your project needs UConverter or URegularExpression from ICU.
     visibility: [
         "//build/orchestrator/apis",
         "//external/icu:__subpackages__",
@@ -100,7 +101,6 @@ cc_library_shared {
         "//external/sqlite:__subpackages__",
         "//external/sfntly",
         "//frameworks/av/media/libmedia",
-        "//packages/apps/Nfc/nci/jni",
     ],
 }
 
