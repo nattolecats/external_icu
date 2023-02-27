@@ -2626,5 +2626,37 @@ public class CalendarRegressionTest extends android.icu.dev.test.TestFmwk {
                          TESTS[i][2], cal.getType());
         }
     }
+
+    @Test
+    public void TestRespectUExtensionFw() { // ICU-22226
+        String[] localeIds = {
+                "en-US",
+                "en-US-u-fw-xyz",
+                "en-US-u-fw-sun",
+                "en-US-u-fw-mon",
+                "en-US-u-fw-thu",
+                "en-US-u-fw-sat"
+        };
+        int[] expectedValues = {
+                Calendar.SUNDAY,
+                Calendar.SUNDAY,
+                Calendar.SUNDAY,
+                Calendar.MONDAY,
+                Calendar.THURSDAY,
+                Calendar.SATURDAY
+        };
+
+        assertEquals(
+                "The localeIds count matches the expectedValues count",
+                localeIds.length,
+                expectedValues.length);
+
+        for (int i = 0; i < localeIds.length; i++) {
+            assertEquals(
+                    "Calendar.getFirstDayOfWeek() does not seem to respect fw extension u in locale id",
+                    expectedValues[i],
+                    Calendar.getInstance(Locale.forLanguageTag(localeIds[i])).getFirstDayOfWeek());
+        }
+    }
 }
 //eof
