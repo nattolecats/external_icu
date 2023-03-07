@@ -67,10 +67,6 @@ cc_defaults {
         "-Wno-unneeded-internal-declaration",
         "-Wno-deprecated-declarations",
     ],
-    // Upstream requires C++11 as the minimum version.
-    cppflags: [
-        "-std=c++11",
-    ],
     target: {
         android: {
             cflags: [
