@@ -127,6 +127,10 @@ java_test {
             "-Xep:ArrayToString:WARN",
         ],
     },
+
+    test_options: {
+        unit_test: false,
+    },
 }
 
 java_import {
