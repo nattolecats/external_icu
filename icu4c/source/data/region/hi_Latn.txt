@@ -24,4 +24,7 @@ hi_Latn{
     Countries%short{
         US{"America"}
     }
+    Countries%variant{
+        TR{"Turkiye"}
+    }
 }
