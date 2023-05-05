@@ -237,6 +237,9 @@ so{
         "America:Chihuahua"{
             ec{"Jiwaahuu"}
         }
+        "America:Ciudad_Juarez"{
+            ec{"Magaalada Juarez"}
+        }
         "America:Coral_Harbour"{
             ec{"Atikokaan"}
         }
