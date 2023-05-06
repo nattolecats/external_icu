@@ -241,24 +241,6 @@ nn{
                     d{"dd.MM–dd.MM"}
                 }
             }
-            monthNames{
-                format{
-                    abbreviated{
-                        "jan.",
-                        "feb.",
-                        "mars",
-                        "apr.",
-                        "mai",
-                        "juni",
-                        "juli",
-                        "aug.",
-                        "sep.",
-                        "okt.",
-                        "nov.",
-                        "des.",
-                    }
-                }
-            }
             quarters{
                 format{
                     narrow{
