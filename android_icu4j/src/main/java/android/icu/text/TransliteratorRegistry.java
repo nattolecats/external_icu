@@ -17,11 +17,13 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Enumeration;
 import java.util.HashMap;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.MissingResourceException;
 import java.util.ResourceBundle;
+import java.util.Set;
 
 import android.icu.impl.ICUData;
 import android.icu.impl.ICUResourceBundle;
@@ -70,7 +72,7 @@ class TransliteratorRegistry {
     /**
      * Vector of public full IDs (CaseInsensitiveString objects).
      */
-    private List<CaseInsensitiveString> availableIDs;
+    private final Set<CaseInsensitiveString> availableIDs;
 
     //----------------------------------------------------------------------
     // class Spec
@@ -294,7 +296,7 @@ class TransliteratorRegistry {
     public TransliteratorRegistry() {
         registry = Collections.synchronizedMap(new HashMap<CaseInsensitiveString, Object[]>());
         specDAG = Collections.synchronizedMap(new HashMap<CaseInsensitiveString, Map<CaseInsensitiveString, List<CaseInsensitiveString>>>());
-        availableIDs = new ArrayList<CaseInsensitiveString>();
+        availableIDs = new LinkedHashSet<>();
     }
 
     /**
@@ -521,9 +523,7 @@ class TransliteratorRegistry {
         registry.put(ciID, arrayOfObj);
         if (visible) {
             registerSTV(source, target, variant);
-            if (!availableIDs.contains(ciID)) {
-                availableIDs.add(ciID);
-            }
+            availableIDs.add(ciID);
         } else {
             removeSTV(source, target, variant);
             availableIDs.remove(ciID);
