@@ -49,6 +49,7 @@ public class NumberFormatTest {
         assertEquals(',', dfs.getDecimalSeparator());
         assertEquals(',', dfs.getMonetaryDecimalSeparator());
         // Assert that the separators in DecimalFormatSymbols are used.
-        assertEquals("€9.876,66",df.format(9876.66));
+        // Disable this assertion as the behavior change on ART 14 module. http://b/286788987
+        // assertEquals("€9.876,66",df.format(9876.66));
     }
 }
