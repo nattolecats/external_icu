@@ -98,6 +98,7 @@ cc_library_shared {
         "//external/sqlite:__subpackages__",
         "//external/sfntly",
         "//frameworks/av/media/libmedia",
+        "//vendor:__subpackages__",
     ],
 }
 
